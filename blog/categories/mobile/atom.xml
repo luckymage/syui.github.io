@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: mobile | MBA-HACK2]]></title>
+  <link href="http://syui.github.io/blog/categories/mobile/atom.xml" rel="self"/>
+  <link href="http://syui.github.io/"/>
+  <updated>2014-07-02T05:32:30+09:00</updated>
+  <id>http://syui.github.io/</id>
+  <author>
+    <name><![CDATA[syui]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[iPhone]]></title>
+    <link href="http://syui.github.io/blog/2014/06/03/iphone/"/>
+    <updated>2014-06-03T00:00:00+09:00</updated>
+    <id>http://syui.github.io/blog/2014/06/03/iphone</id>
+    <content type="html"><![CDATA[<p><img src="/images/more.png" alt="phoenix-power" align="left" width="100" height="100">iPhone4Sの個人的な使い方や使用しているアプリなど。<!--more--><br clear="all"></p>
+
+<p>主に、SNSとRSS処理に使っています。あと、メール及び電話です。</p>
+
+<p>通知関連は、主に、iPhoneで受け取ることが多いです。</p>
+
+<p><img src="http://lh3.ggpht.com/-lE_dvnbWh-4/U3b45S8jZFI/AAAAAAAAIVw/QLsV-BI4bfY/s480/home1.png" alt="" /></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Nexus7]]></title>
+    <link href="http://syui.github.io/blog/2014/06/03/android/"/>
+    <updated>2014-06-03T00:00:00+09:00</updated>
+    <id>http://syui.github.io/blog/2014/06/03/android</id>
+    <content type="html"><![CDATA[<p><img src="/images/more.png" alt="phoenix-power" align="left" width="100" height="100">Nexus7(2012)の個人的な使い方や使っているアプリなどを紹介。<!--more--><br clear="all"></p>
+
+<p>Nexus7では、かなりいろいろな用途に使っています。具体的には、日課としての問題集から、日常の読書、漫画、SNS、ブラウジング、RSS、動画、音楽など。</p>
+
+<p>正直、iPhoneが動かなくなるよりも、Nexus7が動かなくなる方が個人的にはよほど損失が大きいです。</p>
+
+<p>一度だけNexus7に不都合が生じたことがありましたが、その時はかなり困りました。</p>
+
+<p><img src="http://lh5.ggpht.com/-ypgNk-ftJHE/U3b431QPluI/AAAAAAAAIVs/8Bb4n7imdQQ/s480/home1.png" alt="" /></p>
+
+<h2>app</h2>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<h2>root</h2>
+
+<h4><a href="http://repo.xposed.info/module/de.robv.android.xposed.installer" target="_blank">Xposed</a></h4>
+
+<p>オリジナルモジュールの総合マネージャー。</p>
+
+<h4><a href="http://repo.xposed.info/module/com.ceco.kitkat.gravitybox" target="_blank">GravityBox</a></h4>
+
+<p>Xposedのモジュールの一つ。設定全般。</p>
+
+<h4><a href="https://sufficientlysecure.org/index.php/adaway/" target="_blank">AdAway</a></h4>
+
+<p>広告排除アプリ</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[nasneを使った録画のキャプチャ方法]]></title>
+    <link href="http://syui.github.io/blog/2014/05/31/nasne/"/>
+    <updated>2014-05-31T00:00:00+09:00</updated>
+    <id>http://syui.github.io/blog/2014/05/31/nasne</id>
+    <content type="html"><![CDATA[<p><img src="/images/more.png" alt="phoenix-power" align="left" width="100" height="100">nasneとiOSを使った録画のキャプチャ方法を紹介します。<!--more--><br clear="all"></p>
+
+<p>VITAでキャプチャできないのが不便すぎるわけですが、iPhone、iPadを使うとnasneにあるファイルの再生及び、キャプチャができます。</p>
+
+<p><a href="https://itunes.apple.com/jp/app/media-link-player-for-dtv/id635112846" target="_blank">Media Link Player for DTV</a></p>
+
+<p><img src="http://lh6.ggpht.com/-d-opRDevYQk/U4oe37gkK9I/AAAAAAAAIZE/nWFSCWh3taI/%2525E5%252586%252599%2525E7%25259C%25259F%2525202014-06-01%2525203%25252021%25252027.png"></p>
+
+<p>このアプリでできることは、著作権保護技術（DTCP-IP）対応のDLNAクライアント機器として、基本的な操作ができるようになります。</p>
+
+<p>具体的には、DLNAサーバーに保存してあるファイルの再生やファイルのコピーができます。</p>
+
+<p>ただし、コピーする場合は、DTCP-IPによる回数制限がありますので注意してください。</p>
+
+<p><code>Media Link Player for DTV</code>には、Android用のアプリも存在しているようです。キャプチャできるかどうかは知りませんが。</p>
+
+<p></p>
+
+<p>これで、アニメの感想記事も捗りそうです。</p>
+]]></content>
+  </entry>
+  
+</feed>

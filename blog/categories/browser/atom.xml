@@ -1,0 +1,1159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: browser | MBA-HACK2]]></title>
+  <link href="http://syui.github.io/blog/categories/browser/atom.xml" rel="self"/>
+  <link href="http://syui.github.io/"/>
+  <updated>2014-07-02T05:32:30+09:00</updated>
+  <id>http://syui.github.io/</id>
+  <author>
+    <name><![CDATA[syui]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[airchrome.zsh]]></title>
+    <link href="http://syui.github.io/blog/2014/06/12/airchrome/"/>
+    <updated>2014-06-12T00:00:00+09:00</updated>
+    <id>http://syui.github.io/blog/2014/06/12/airchrome</id>
+    <content type="html"><![CDATA[<p><img src="/images/more.png" alt="phoenix-power" align="left" width="100" height="100">airchrome.zshのコードを解説します。<!--more--><br clear="all"></p>
+
+<p><a href="https://github.com/syui/airchrome.zsh">https://github.com/syui/airchrome.zsh</a></p>
+
+<h2>README.md</h2>
+
+<h3>features</h3>
+
+<p>This article explains the features in <code>airchrome.zsh</code>.</p>
+
+<p><code>airchrome.zsh</code> is operates on the Google Chrome from zsh.</p>
+
+<p><code>airchrome.zsh</code> is will only support Mac, And some functions only support of iTerm terminal.</p>
+
+<h3>japanese</h3>
+
+<p>この記事は、<code>airchrome.zsh</code>の機能について解説します。</p>
+
+<p><code>airchrome.zsh</code>は、 zsh から Google Chrome を操作します。</p>
+
+<p><code>airchrome.zsh</code>は、 Mac のみに対応しています。そして、一部機能は、端末の iTerm を使用します。</p>
+
+<h3>install</h3>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git clone &lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;https://github.com/syui/airchrome.zsh&quot;</span>&gt;https://github.com/syui/airchrome.zsh&lt;/a&gt;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span><span class="nb">cd</span> !<span class="nv">$:</span>t&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>touch ~/.zshrc&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span><span class="nb">echo</span> &amp;ldquo;source <span class="nv">$PWD</span>/airchrome.zsh&amp;rdquo; &gt;&gt; ~/.zshrc&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span><span class="nb">source</span> ~/.zshrc
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>bindkey</h3>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> key </th>
+<th> title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>  ?  </td>
+<td> ヘルプ</td>
+</tr>
+<tr>
+<td></td>
+<td>  ^e </td>
+<td> emacs モードに切り替える</td>
+</tr>
+<tr>
+<td></td>
+<td>  ^v </td>
+<td> vi モードに切り替える</td>
+</tr>
+<tr>
+<td></td>
+<td>  jj </td>
+<td> vi の normal モードに切り替える</td>
+</tr>
+<tr>
+<td></td>
+<td>  i  </td>
+<td> vi の insert モードに切り替える</td>
+</tr>
+<tr>
+<td></td>
+<td>  .  </td>
+<td> percol のインターフェイスを使う</td>
+</tr>
+<tr>
+<td></td>
+<td>  f  </td>
+<td> Chrome に f を送る</td>
+</tr>
+<tr>
+<td></td>
+<td>  b  </td>
+<td> Chrome に特定のキーを送る</td>
+</tr>
+<tr>
+<td></td>
+<td>  n  </td>
+<td> Chrome に入力を送る</td>
+</tr>
+<tr>
+<td></td>
+<td>  0  </td>
+<td> ウィンドウを0.0で透過。iTermを使用します。</td>
+</tr>
+<tr>
+<td></td>
+<td>  1  </td>
+<td> ウィンドウを0.4で透過。iTermを使用します。</td>
+</tr>
+<tr>
+<td></td>
+<td>  2  </td>
+<td> ウィンドウを1.0で透過。iTermを使用します。</td>
+</tr>
+<tr>
+<td></td>
+<td>  j  </td>
+<td> スクロール下</td>
+</tr>
+<tr>
+<td></td>
+<td>  k  </td>
+<td> スクロール上</td>
+</tr>
+<tr>
+<td></td>
+<td>  h  </td>
+<td> 次へ</td>
+</tr>
+<tr>
+<td></td>
+<td>  l  </td>
+<td> 前へ</td>
+</tr>
+<tr>
+<td></td>
+<td>  w  </td>
+<td> タブを閉じる</td>
+</tr>
+<tr>
+<td></td>
+<td>  t  </td>
+<td> タブの切替</td>
+</tr>
+<tr>
+<td></td>
+<td>  o  </td>
+<td> タブ</td>
+</tr>
+<tr>
+<td></td>
+<td>  r  </td>
+<td> リロード</td>
+</tr>
+<tr>
+<td></td>
+<td>  p  </td>
+<td> ペースト</td>
+</tr>
+<tr>
+<td></td>
+<td>  y  </td>
+<td> コピー</td>
+</tr>
+<tr>
+<td></td>
+<td>  c  </td>
+<td> 現在のページにコマンドをコピーします。</td>
+</tr>
+<tr>
+<td></td>
+<td>  yu </td>
+<td> 現在のページの URL を取得します。</td>
+</tr>
+<tr>
+<td></td>
+<td>  yt </td>
+<td> 現在のページのタイトルを取得します。</td>
+</tr>
+<tr>
+<td></td>
+<td>  yy </td>
+<td> 現在のページの URL とタイトルをコピーします。</td>
+</tr>
+<tr>
+<td></td>
+<td>  yf </td>
+<td> テキストをコピーします。</td>
+</tr>
+<tr>
+<td></td>
+<td>  ym </td>
+<td> 現在のページの URL とタイトルを Markdown 形式で取得します。</td>
+</tr>
+<tr>
+<td></td>
+<td>  yh </td>
+<td> 現在のページの URL とタイトルを HTML 形式で取得します。</td>
+</tr>
+<tr>
+<td></td>
+<td>  cc </td>
+<td> ブログに掲載されているコマンドをコピーします。</td>
+</tr>
+<tr>
+<td></td>
+<td>  c; </td>
+<td> ブログに掲載されているコマンドを複数行選択コピーします。各コマンドを ; でつなぎます。</td>
+</tr>
+<tr>
+<td></td>
+<td>  c@ </td>
+<td> ブログに掲載されているコマンドを複数行選択コピーします。各コマンドを &amp;&amp; でつなぎます。</td>
+</tr>
+<tr>
+<td></td>
+<td>  af </td>
+<td> Feedly で自動 RSS URL を開きます。</td>
+</tr>
+<tr>
+<td></td>
+<td>  au </td>
+<td> Feedly で現在のURL を開きます。</td>
+</tr>
+<tr>
+<td></td>
+<td>  ak </td>
+<td> airkeepass という外部ツールを開きます。</td>
+</tr>
+<tr>
+<td></td>
+<td>  ag </td>
+<td> airgoogleplus という外部ツールを開きます。</td>
+</tr>
+<tr>
+<td></td>
+<td>  bb </td>
+<td> ブックマークを開きます。 percol という外部ツールを使用します。</td>
+</tr>
+<tr>
+<td></td>
+<td>  bs </td>
+<td> ブックマークのディレクトリ1を選択して、 Chrome で開きます。</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>code</h2>
+
+<p><code>airchrome.zsh</code>のコードを解説します。</p>
+
+<h3>airchrome.zsh</h3>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/path/to/airchrome.zsh </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
+<span class='line-number'>141</span>
+<span class='line-number'>142</span>
+<span class='line-number'>143</span>
+<span class='line-number'>144</span>
+<span class='line-number'>145</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;パスの取得&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;path <span class="o">{{{</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;airchrome_dir<span class="o">=</span><span class="nv">$0</span>:h
+</span><span class='line'><span class="nv">airchrome_script</span><span class="o">=</span><span class="nv">$airchrome_dir</span>/script&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;path <span class="o">}}}</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;デフォルトプロンプトの設定&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;prompt <span class="o">{{{</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;現在のバインドモードを取得&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;EMACS_INSERT<span class="o">=</span>&lt;code&gt;bindkey -lL main | cut -d <span class="s1">&#39; &#39;</span> -f 3&lt;/code&gt;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;現在のバインドモード<span class="o">(</span>文字列<span class="o">)</span>に装飾を施す&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;EMACS_INSERT<span class="o">=</span>&amp;ldquo;%K<span class="o">{</span>black<span class="o">}</span>%F<span class="o">{</span>034<span class="o">}</span>⮂%k%f%K<span class="o">{</span>034<span class="o">}</span>%F<span class="o">{</span>011<span class="o">}</span> % <span class="nv">$EMACS_INSERT</span> %k%f&amp;rdquo;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;モードが vi の場合の装飾&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;VIM_INSERT<span class="o">=</span>&amp;ldquo;%K<span class="o">{</span>034<span class="o">}</span>%F<span class="o">{</span>075<span class="o">}</span>⮂%k%f%K<span class="o">{</span>075<span class="o">}</span>%F<span class="o">{</span>026<span class="o">}</span> % INSERT %k%f%K<span class="o">{</span>075<span class="o">}</span>%F<span class="o">{</span>black<span class="o">}</span>⮂%k%f&amp;rdquo;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;プロンプトの設定&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;RPROMPT<span class="o">=</span>&amp;ldquo;<span class="nv">$EMACS_INSERT$VIM_INSERT</span>&amp;rdquo;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;キーバインドが emacs モードだった場合のプロンプトの設定&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;function zle-keymap-select <span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;EMACS_INSERT<span class="o">=</span><span class="sb">`</span>bindkey -lL main | cut -d <span class="s1">&#39; &#39;</span> -f 3<span class="sb">`</span>
+</span><span class='line'><span class="k">if </span><span class="nb">echo</span> <span class="nv">$EMACS_INSERT</span> | grep emacs &amp;gt; /dev/null 2&amp;gt;&amp;amp;1;then
+</span><span class='line'>    <span class="nv">EMACS_INSERT</span><span class="o">=</span><span class="s2">&quot;%K{black}%F{011}⮂%k%f%K{011}%F{034} % $EMACS_INSERT %k%f&quot;</span>
+</span><span class='line'>    <span class="nv">VIM_NORMAL</span><span class="o">=</span><span class="s2">&quot;%K{011}%F{125}⮂%k%f%K{125}%F{015} % NORMAL %k%f%K{125}%F{black}⮂%k%f&quot;</span>
+</span><span class='line'>    <span class="nv">VIM_INSERT</span><span class="o">=</span><span class="s2">&quot;%K{011}%F{075}⮂%k%f%K{075}%F{026} % INSERT %k%f%K{075}%F{black}⮂%k%f&quot;</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'><span class="k">    </span><span class="nv">EMACS_INSERT</span><span class="o">=</span><span class="s2">&quot;%K{black}%F{034}⮂%k%f%K{034}%F{011} % $EMACS_INSERT %k%f&quot;</span>
+</span><span class='line'>    <span class="nv">VIM_NORMAL</span><span class="o">=</span><span class="s2">&quot;%K{034}%F{125}⮂%k%f%K{125}%F{015} % NORMAL %k%f%K{125}%F{black}⮂%k%f&quot;</span>
+</span><span class='line'>    <span class="nv">VIM_INSERT</span><span class="o">=</span><span class="s2">&quot;%K{034}%F{075}⮂%k%f%K{075}%F{026} % INSERT %k%f%K{075}%F{black}⮂%k%f&quot;</span>
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'><span class="nv">RPROMPT</span><span class="o">=</span><span class="s2">&quot;$EMACS_INSERT${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}&quot;</span>
+</span><span class='line'>zle reset-prompt
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">}</span>
+</span><span class='line'>zle -N zle-keymap-select&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;prompt <span class="o">}}}</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;キーバインド emacs モードにした時のプロンプト&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;prompt-bindkey <span class="o">{{{</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;function airchrome-bindmode-emacs <span class="o">()</span> <span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;# emacs モードへの切り替え
+</span><span class='line'>bindkey -e
+</span><span class='line'>
+</span><span class='line'><span class="nv">EMACS_INSERT</span><span class="o">=</span><span class="sb">`</span>bindkey -lL main | cut -d <span class="s1">&#39; &#39;</span> -f 3<span class="sb">`</span>
+</span><span class='line'><span class="k">if </span><span class="nb">echo</span> <span class="nv">$EMACS_INSERT</span> | grep emacs &amp;gt; /dev/null 2&amp;gt;&amp;amp;1;then
+</span><span class='line'>    <span class="nv">EMACS_INSERT</span><span class="o">=</span><span class="s2">&quot;%K{black}%F{011}⮂%k%f%K{011}%F{034} % $EMACS_INSERT %k%f&quot;</span>
+</span><span class='line'>    <span class="nv">VIM_NORMAL</span><span class="o">=</span><span class="s2">&quot;%K{011}%F{125}⮂%k%f%K{125}%F{015} % NORMAL %k%f%K{125}%F{black}⮂%k%f&quot;</span>
+</span><span class='line'>    <span class="nv">VIM_INSERT</span><span class="o">=</span><span class="s2">&quot;%K{011}%F{075}⮂%k%f%K{075}%F{026} % INSERT %k%f%K{075}%F{black}⮂%k%f&quot;</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'><span class="k">    </span><span class="nv">EMACS_INSERT</span><span class="o">=</span><span class="s2">&quot;%K{black}%F{034}⮂%k%f%K{034}%F{011} % $EMACS_INSERT %k%f&quot;</span>
+</span><span class='line'>    <span class="nv">VIM_NORMAL</span><span class="o">=</span><span class="s2">&quot;%K{034}%F{125}⮂%k%f%K{125}%F{015} % NORMAL %k%f%K{125}%F{black}⮂%k%f&quot;</span>
+</span><span class='line'>    <span class="nv">VIM_INSERT</span><span class="o">=</span><span class="s2">&quot;%K{034}%F{075}⮂%k%f%K{075}%F{026} % INSERT %k%f%K{075}%F{black}⮂%k%f&quot;</span>
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'><span class="nv">RPS1</span><span class="o">=</span><span class="s2">&quot;$EMACS_INSERT${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}&quot;</span>
+</span><span class='line'><span class="nv">RPS2</span><span class="o">=</span><span class="nv">$RPS1</span>
+</span><span class='line'>zle reset-prompt
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">}</span>
+</span><span class='line'>zle -N airchrome-bindmode-emacs&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;vi モードで Ctrl+e を押すと、 emacs モードに切り替えと同時に、プロンプトが設定される&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;bindkey -v &amp;lsquo;^e&amp;rsquo; airchrome-bindmode-emacs&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;vi の normal モードで Ctrl+e を押すと、 emacs モードに切り替わると同時に、プロンプトが設定される&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;bindkey -a &amp;lsquo;^e&amp;rsquo; airchrome-bindmode-emacs&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;function airchrome-bindmode-vi <span class="o">()</span> <span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;bindkey -v
+</span><span class='line'>
+</span><span class='line'><span class="nv">EMACS_INSERT</span><span class="o">=</span><span class="sb">`</span>bindkey -lL main | cut -d <span class="s1">&#39; &#39;</span> -f 3<span class="sb">`</span>
+</span><span class='line'><span class="k">if </span><span class="nb">echo</span> <span class="nv">$EMACS_INSERT</span> | grep emacs &amp;gt; /dev/null 2&amp;gt;&amp;amp;1;then
+</span><span class='line'>    <span class="nv">EMACS_INSERT</span><span class="o">=</span><span class="s2">&quot;%K{black}%F{011}⮂%k%f%K{011}%F{034} % $EMACS_INSERT %k%f&quot;</span>
+</span><span class='line'>    <span class="nv">VIM_NORMAL</span><span class="o">=</span><span class="s2">&quot;%K{011}%F{125}⮂%k%f%K{125}%F{015} % NORMAL %k%f%K{125}%F{black}⮂%k%f&quot;</span>
+</span><span class='line'>    <span class="nv">VIM_INSERT</span><span class="o">=</span><span class="s2">&quot;%K{011}%F{075}⮂%k%f%K{075}%F{026} % INSERT %k%f%K{075}%F{black}⮂%k%f&quot;</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'><span class="k">    </span><span class="nv">EMACS_INSERT</span><span class="o">=</span><span class="s2">&quot;%K{black}%F{034}⮂%k%f%K{034}%F{011} % $EMACS_INSERT %k%f&quot;</span>
+</span><span class='line'>    <span class="nv">VIM_NORMAL</span><span class="o">=</span><span class="s2">&quot;%K{034}%F{125}⮂%k%f%K{125}%F{015} % NORMAL %k%f%K{125}%F{black}⮂%k%f&quot;</span>
+</span><span class='line'>    <span class="nv">VIM_INSERT</span><span class="o">=</span><span class="s2">&quot;%K{034}%F{075}⮂%k%f%K{075}%F{026} % INSERT %k%f%K{075}%F{black}⮂%k%f&quot;</span>
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'><span class="nv">RPS1</span><span class="o">=</span><span class="s2">&quot;$EMACS_INSERT${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}&quot;</span>
+</span><span class='line'><span class="nv">RPS2</span><span class="o">=</span><span class="nv">$RPS1</span>
+</span><span class='line'>zle reset-prompt
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">}</span>
+</span><span class='line'>zle -N airchrome-bindmode-vi&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;emacs モードで Ctrl+v を押すと、 vi モードに切り替わると同時に、プロンプトが設定される&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;bindkey -e &amp;lsquo;^v&amp;rsquo; airchrome-bindmode-vi&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;デフォルトキーバインドの設定&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;bindkey -v&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;bindkey <span class="o">}}}</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;bindkye <span class="o">{{{</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h2&gt;Ctrl+e をおした時のプロンプトでの実行&lt;/h2&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;bindkey -sv &amp;lsquo;^e&amp;rsquo; &amp;lsquo;bindkey -e<span class="se">\n</span>&amp;rsquo;&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;bindkey -se &amp;lsquo;^v&amp;rsquo; &amp;lsquo;bindkey -v<span class="se">\n</span>&amp;rsquo;&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;<span class="o">}}}</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;jj を押すと、 vi の normal モードに切り替わる&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;bindkey -M viins &amp;lsquo;jj&amp;rsquo; vi-cmd-mode&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;ヘルプを表示する&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;function airchrome-browser-help <span class="o">()</span> <span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;<span class="nv">$airchrome_script</span>/airchrome_help.sh
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">}</span>
+</span><span class='line'>zle -N airchrome-browser-help
+</span><span class='line'>bindkey -a &amp;lsquo;?&amp;rsquo; airchrome-browser-help
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>path</h3>
+
+<p>zsh scriptのパスの取得を解説します。</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;スクリプトに記述した場合、現在、スクリプトがあるディレクトリパスを取得する&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;dir<span class="o">=</span><span class="k">${</span><span class="nv">0</span><span class="p">:</span><span class="nv">a</span><span class="p">:</span><span class="nv">h</span><span class="k">}</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;現在のディレクトリの一つ上のパスを取得する<span class="o">(</span>上の記述とセットで動作する<span class="o">)</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;lhome<span class="o">=</span><span class="k">${</span><span class="nv">dir</span><span class="p">:</span><span class="nv">h</span><span class="k">}</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;dir に依存しない形で取得する場合&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;lhome<span class="o">=</span><span class="k">${</span><span class="nv">0</span><span class="p">:</span><span class="nv">a</span><span class="p">:</span><span class="nv">h</span><span class="p">:</span><span class="nv">h</span><span class="k">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>directory</h3>
+
+<p>私が作るツールのディレクトリ構造を解説します。</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>.
+</span><span class='line'>├── LICENSE <span class="c">#ライセンス:cc0</span>
+</span><span class='line'>│
+</span><span class='line'>├── README.md <span class="c">#説明書</span>
+</span><span class='line'>│
+</span><span class='line'>├── airchrome.zsh <span class="c">#本体:ディレクトリ名</span>
+</span><span class='line'>│
+</span><span class='line'>├── tool <span class="c">#外部ツール、ダウンロードファイル</span>
+</span><span class='line'>│
+</span><span class='line'>├── script <span class="c">#スクリプト、実行ファイル</span>
+</span><span class='line'>│   │  
+</span><span class='line'>│   ├── hoge.sh
+</span><span class='line'>│   │  
+</span><span class='line'>│   └── huga.sh
+</span><span class='line'>│
+</span><span class='line'>├── t <span class="c">#テスト</span>
+</span><span class='line'>│   │  
+</span><span class='line'>│   └── test.sh
+</span><span class='line'>│ 
+</span><span class='line'>└── txt <span class="c">#テキスト、テーマファイルなど&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;│  
+</span><span class='line'>└── theme.txt
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>function</h3>
+
+<p>以下は、zshで使える<code>function</code>の一般的な書式です。</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;コマンドのまとまりを記述、hogeがコマンド名になる&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;function hoge <span class="o">()</span> <span class="o">{</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;echo <span class="nb">command</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">}</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;ラインエディタを有効にする。自分が新しいコマンドを作る場合に必要&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;zle -N hoge&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;キーバインドを設定&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;bindkey &amp;lsquo;^a&amp;rsquo; hoge
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>percol</h3>
+
+<p>percolインターフェイスを使用することが多いです。</p>
+
+<p><a href="http://qiita.com/syui/items/f2fe51d00378210d10b1">percol &ndash; コマンドラインでの選択的インターフェイスについて考える &ndash; Qiita</a></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>~/airchrome.zsh/script/airchrome_percol.sh </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;!/bin/zsh&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;テーマファイルを用意し、それを引数にスクリプトを実行する <span class="o">{{{</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;テーマファイルのパスを取得&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;them<span class="o">=</span><span class="nv">$lhome</span>/txt/theme.txt&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;percolでテーマを選択、取得する&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;opt<span class="o">=</span>&lt;code&gt;cat <span class="nv">$them</span> | percol --query<span class="o">=</span><span class="s2">&quot;air-&quot;</span> | cut -d <span class="s2">&quot;:&quot;</span> -f 1&lt;/code&gt;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;スクリプトを文字列に応じて実行します&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;case <span class="nv">$opt</span> in&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;<span class="s2">&quot;air-?&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="nv">$scpt</span>/airchrome_help.sh
+</span><span class='line'>    ;;
+</span><span class='line'>
+</span><span class='line'><span class="s2">&quot;air-ag&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="nv">$scpt</span>/airgoogleplus.sh
+</span><span class='line'>    ;;
+</span><span class='line'>
+</span><span class='line'>*<span class="o">)</span>
+</span><span class='line'>    <span class="nb">exit</span>
+</span><span class='line'>    ;;
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;esac
+</span><span class='line'><span class="o">}}}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>それに、私は、<code>case</code>文を好んで使います。</p>
+
+<p><code>case</code>は、以下のように正規表現を使って判断もできます。</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;key<span class="o">=</span>&lt;code&gt;read key&lt;/code&gt;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;case <span class="nv">$key</span> in&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;  y<span class="o">[</span>Y<span class="o">]</span>es|ok<span class="o">)</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;echo yes;;
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;  n<span class="o">[</span>N<span class="o">]</span>o<span class="o">)</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;echo no;;
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;  *<span class="o">)</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;exit;;
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;esac
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>script</h2>
+
+<h3>Shell Script</h3>
+
+<h4>基本的な書き方</h4>
+
+<p>Apple Scriptのコマンドラインでの実行は、<code>osascript</code>コマンドで行います。ただし、引数の処理が面倒なので、ShellScriptで書いています。</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>iterm_transparency_03.sh </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;osascript &amp;lt;&amp;lt; EOF
+</span><span class='line'>tell application &amp;ldquo;iTerm&amp;rdquo;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;activate
+</span><span class='line'>tell current session of current terminal
+</span><span class='line'>  <span class="nb">set </span>transparency to <span class="nv">$1</span>
+</span><span class='line'>end tell
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;end tell
+</span><span class='line'>EOF
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><code>EOF</code>を使うことで、様々な処理ができます。通常は以下の様に使います。</p>
+
+<p>``` bash EOF
+cat &lt;&lt; EOF > ~/test.txt
+  echo test
+EOF</p>
+
+<p>cat &lt;&lt; EOF | osascript &ndash;
+tell application &ldquo;iTerm&rdquo;</p>
+
+<pre><code>activate
+tell current session of current terminal
+  set transparency to $1
+end tell
+</code></pre>
+
+<p>end tell
+EOF
+```</p>
+
+<h4>Google ChromeでFeedlyを開く</h4>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;!/bin/zsh&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;ディレクトリパス&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;dir<span class="o">=</span><span class="k">${</span><span class="nv">0</span><span class="p">:</span><span class="nv">a</span><span class="p">:</span><span class="nv">h</span><span class="k">}</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;現在、Google Chromeで開いているURLを取得&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;url<span class="o">=</span>&lt;code&gt;<span class="nv">$dir</span>/browser_get_url.sh&lt;/code&gt;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;URLのトップアドレスを取得 <span class="o">(</span>hoge, <span class="nv">huga</span><span class="o">=</span>&lt;code&gt;command&lt;/code&gt;という書き方もできるかも<span class="o">)</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;urltop<span class="o">=</span>&lt;code&gt;echo <span class="nv">$url</span> | cut -d <span class="s2">&quot;/&quot;</span> -f 1-3&lt;/code&gt;
+</span><span class='line'><span class="nv">urlhttpno</span><span class="o">=</span>&lt;code&gt;echo <span class="nv">$url</span> | cut -d <span class="s2">&quot;/&quot;</span> -f 3&lt;/code&gt;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;urlhttpno<span class="o">=</span><span class="nv">$urltop</span>&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Feedlyのアドレス&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;urlfeedly<span class="o">=</span>&amp;ldquo;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;http://www.feedly.com/home#subscription/feed&quot;</span>&gt;http://www.feedly.com/home#subscription/feed&lt;/a&gt;&amp;rdquo;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;ブログサービスによって処理を変更する&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;if <span class="nb">echo</span> <span class="nv">$urlhttpno</span> | grep &amp;ldquo;livedoor.jp<span class="se">\|</span>fc2.com<span class="se">\|</span>blogspot.com<span class="se">\|</span>blogspot.jp<span class="se">\|</span>github.io&amp;rdquo; &gt; /dev/null 2&gt;&amp;amp;1 ; <span class="k">then</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;# livedoor
+</span><span class='line'><span class="k">if </span><span class="nb">echo</span> <span class="nv">$urlhttpno</span> | grep <span class="s2">&quot;livedoor.jp&quot;</span> &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 ; <span class="k">then</span>
+</span><span class='line'><span class="k">    </span>open -a <span class="s2">&quot;Google Chrome&quot;</span> <span class="s2">&quot;$urlfeedly/$urltop/index.rdf&quot;</span>
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># fc2</span>
+</span><span class='line'><span class="k">if </span><span class="nb">echo</span> <span class="nv">$urlhttpno</span> | grep <span class="s2">&quot;fc2.com&quot;</span> &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 ; <span class="k">then</span>
+</span><span class='line'><span class="k">    </span>open -a <span class="s2">&quot;Google Chrome&quot;</span> <span class="s2">&quot;$urlfeedly/$urltop/?xml&quot;</span>
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># blogger</span>
+</span><span class='line'><span class="k">if </span><span class="nb">echo</span> <span class="nv">$urlhttpno</span> | grep <span class="s2">&quot;blogspot.com&quot;</span> &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 ; <span class="k">then</span>
+</span><span class='line'><span class="k">    </span>open -a <span class="s2">&quot;Google Chrome&quot;</span> <span class="s2">&quot;$urlfeedly/$urltop/feeds/posts/default&quot;</span>
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if </span><span class="nb">echo</span> <span class="nv">$urlhttpno</span> | grep <span class="s2">&quot;blogspot.jp&quot;</span> &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 ; <span class="k">then</span>
+</span><span class='line'><span class="k">    </span>open -a <span class="s2">&quot;Google Chrome&quot;</span> <span class="s2">&quot;$urlfeedly/$urltop/feeds/posts/default&quot;</span>
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># github pages</span>
+</span><span class='line'><span class="k">if </span><span class="nb">echo</span> <span class="nv">$urlhttpno</span> | grep <span class="s2">&quot;github.io&quot;</span> &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 ; <span class="k">then</span>
+</span><span class='line'><span class="k">    </span>open -a <span class="s2">&quot;Google Chrome&quot;</span> <span class="s2">&quot;$urlfeedly/$urltop/atom.xml&quot;</span>
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;else&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;# default:+/feed
+</span><span class='line'>open -a <span class="s2">&quot;Google Chrome&quot;</span> <span class="s2">&quot;$urlfeedly/$urltop/feed&quot;</span>
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;fi&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;exit
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3>Apple Script</h3>
+
+<h4>Google Chromeのリロード完了を待つ</h4>
+
+<p>``` bash chrome_reload_done.sh</p>
+
+<h1>!/bin/zsh</h1>
+
+<p>osascript &lt;&lt; EOF
+tell application &ldquo;Google Chrome&rdquo;
+   repeat while loading of active tab of window 1</p>
+
+<pre><code>    delay 0.1
+</code></pre>
+
+<p>   end repeat
+   activate
+end tell
+EOF
+```</p>
+
+<h4>Google Chromeの現在開いているタブをリロードする</h4>
+
+<p>``` bash chrome_reload_tab.sh</p>
+
+<h1>!/bin/zsh</h1>
+
+<p>osascript &lt;&lt; EOF
+tell application &ldquo;Google Chrome&rdquo;</p>
+
+<pre><code>reload active tab of window 1
+</code></pre>
+
+<p>end tell
+EOF
+```</p>
+
+<h4>Google Chromeで現在開いているタブのURLを取得する</h4>
+
+<p>``` bash chrome_get_url.sh</p>
+
+<h1>!/bin/zsh</h1>
+
+<p>osascript &lt;&lt; EOF
+tell application &ldquo;Google Chrome&rdquo; to get URL of active tab of first window
+EOF
+```</p>
+
+<h4>Google Chromeで現在開いているタブのタイトルを取得する</h4>
+
+<p>``` bash chrome_get_title.sh</p>
+
+<h1>!/bin/zsh</h1>
+
+<p>osascript &lt;&lt; EOF
+tell application &ldquo;Google Chrome&rdquo; to get NAME of active tab of first window
+EOF
+```</p>
+
+<h4>iTermからGoogle Chromeへキーを送る</h4>
+
+<p>``` bash chrome_key_iterm.sh</p>
+
+<h1>!/bin/zsh</h1>
+
+<p>osascript &lt;&lt; EOF
+tell application &ldquo;Google Chrome&rdquo;</p>
+
+<pre><code>activate
+tell application "System Events"
+    delay 0.3
+    keystroke "$1"
+    tell application "iTerm"
+        activate
+    end tell
+end tell
+</code></pre>
+
+<p>end tell
+EOF
+```</p>
+
+<p><code>keystroke</code>と<code>key code</code>が使えます。</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>keystroke &amp;ldquo;v&amp;rdquo; using <span class="o">{</span><span class="nb">command </span>down, option down, <span class="nb">shift </span>down<span class="o">}</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;key code 53 &amp;mdash;esc
+</span><span class='line'>key code 51 &amp;mdash;delete
+</span><span class='line'>key code 48 &amp;mdash;tab
+</span><span class='line'>key code 49 &amp;mdash;space
+</span><span class='line'>key code 36 &amp;mdash;return
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h4>Google Chromeのブックマークを開く</h4>
+
+<p>``` bash chrome_open_bookmark.sh</p>
+
+<h1>!/bin/zsh</h1>
+
+<p>dir=~/Library/Application\ Support/Google/Chrome/Default/Bookmarks</p>
+
+<p>if [ -e $dir ]; then</p>
+
+<pre><code>name=`cat $dir | jq -r '.roots.bookmark_bar.children[].children[].name' | percol`
+arg=".roots.bookmark_bar.children[].children[] | select(.name == \"$name\" )"
+url=`cat $dir | jq -r $arg | jq -r .url`
+open -a Google\ Chrome "$url"
+</code></pre>
+
+<p>fi</p>
+
+<p>exit 0
+```</p>
+
+<h4>iTermの透過度を設定する</h4>
+
+<p>``` bash iterm_set_transparency.sh</p>
+
+<h1>!/bin/zsh</h1>
+
+<p>osascript &lt;&lt; EOF
+tell application &ldquo;iTerm&rdquo;</p>
+
+<pre><code>activate
+tell current session of current terminal
+  set transparency to $1
+end tell
+</code></pre>
+
+<p>end tell
+EOF
+```</p>
+]]></content>
+  </entry>
+  
+</feed>

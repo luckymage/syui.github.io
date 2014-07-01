@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: domain | MBA-HACK2]]></title>
+  <link href="http://syui.github.io/blog/tags/domain/atom.xml" rel="self"/>
+  <link href="http://syui.github.io/"/>
+  <updated>2014-07-02T05:32:30+09:00</updated>
+  <id>http://syui.github.io/</id>
+  <author>
+    <name><![CDATA[syui]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
