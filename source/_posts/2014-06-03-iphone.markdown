@@ -1,0 +1,40 @@
+---
+layout: post
+title: "iPhone"
+date: 2014-06-03
+comments: true
+categories: [mobile, tips]
+tags: [apple, ios, iphone, application]
+---
+
+
+<img src="{{ root_url }}/images/more.png" alt="phoenix-power" align="left" width="100" height="100">iPhone4Sの個人的な使い方や使用しているアプリなど。<!--more--><br clear="all">
+
+
+主に、SNSとRSS処理に使っています。あと、メール及び電話です。
+
+通知関連は、主に、iPhoneで受け取ることが多いです。
+
+
+{% appbox appstore 333903271 %}
+
+{% appbox appstore 722294701 %}
+
+{% appbox appstore 396069556 %}
+
+{% appbox appstore 306277111 %}
+
+{% appbox appstore 327630330 %}
+
+{% appbox appstore 917437289 %}
+
+{% appbox appstore 395680819 %}
+
+{% appbox appstore 585027354 %}
+
+{% appbox appstore 451661808 %}
+
+{% appbox appstore 418102178 %}
+
+{% appbox appstore 430921107 %}
+

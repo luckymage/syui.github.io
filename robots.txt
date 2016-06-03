@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: http://syui.github.io/sitemap.xml

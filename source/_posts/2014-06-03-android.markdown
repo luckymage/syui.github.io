@@ -1,0 +1,94 @@
+---
+layout: post
+title: "Nexus7"
+date: 2014-06-03
+comments: true
+categories: [mobile, tips]
+tags: [google, android, application, nexus]
+---
+
+
+<img src="{{ root_url }}/images/more.png" alt="phoenix-power" align="left" width="100" height="100">Nexus7(2012)の個人的な使い方や使っているアプリなどを紹介。<!--more--><br clear="all">
+
+
+Nexus7では、かなりいろいろな用途に使っています。具体的には、日課としての問題集から、日常の読書、漫画、SNS、ブラウジング、RSS、動画、音楽など。
+
+正直、iPhoneが動かなくなるよりも、Nexus7が動かなくなる方が個人的にはよほど損失が大きいです。
+
+一度だけNexus7に不都合が生じたことがありましたが、その時はかなり困りました。
+
+##app
+
+{% appbox googleplay com.twitter.android %}
+
+{% appbox googleplay com.google.android.apps.plus %}
+
+{% appbox googleplay com.devhd.feedly %}
+
+{% appbox googleplay jackpal.androidterm %}
+
+{% appbox googleplay org.mozilla.firefox %}
+
+{% appbox googleplay com.overlook.android.fing %}
+
+{% appbox googleplay com.avast.android.mobilesecurity %}
+
+{% appbox googleplay com.rookiestudio.perfectviewer %}
+
+{% appbox googleplay com.amazon.kindle %}
+
+{% appbox googleplay net.androidcomics.acv %}
+
+{% appbox googleplay com.adsk.sketchbookhdexpress %}
+
+{% appbox googleplay com.adobe.psmobile %}
+
+{% appbox googleplay com.evernote.skitch %}
+
+{% appbox googleplay org.videolan.vlc.betav7neon %}
+
+{% appbox googleplay ru.zdevs.zarchiver %}
+
+{% appbox googleplay com.dropbox.android %}
+
+{% appbox googleplay com.estrongs.android.pop %}
+
+{% appbox googleplay com.google.android.inputmethod.japanese %}
+
+{% appbox googleplay org.rojekti.clipper %}
+
+{% appbox googleplay net.metaquotes.metatrader4 %}
+
+{% appbox googleplay eu.chainfire.supersu %}
+
+{% appbox googleplay stericson.busybox %}
+
+{% appbox googleplay com.jv.falcon %}
+
+{% appbox googleplay org.pocketworkstation.pckeyboard %}
+
+{% appbox googleplay info.repy.android.FullKeyboard %}
+
+##root
+
+####<a href="http://repo.xposed.info/module/de.robv.android.xposed.installer" target="_blank">Xposed</a>
+オリジナルモジュールの総合マネージャー。
+
+
+####<a href="http://repo.xposed.info/module/com.ceco.kitkat.gravitybox" target="_blank">GravityBox</a>
+
+Xposedのモジュールの一つ。設定全般。[lollipop](http://forum.xda-developers.com/showthread.php?t=3034811)
+
+####<a href="https://sufficientlysecure.org/index.php/adaway/" target="_blank">AdAway</a>
+
+広告排除アプリ
+
+##use
+
+[Linux on Arch Linux](http://qiita.com/syui/items/538e091d4060c0e3952d)
+
+[Android 5.0 root](http://qiita.com/syui/items/e99993ae9b17d5f31b70)
+
+[Android 4.0 root](http://qiita.com/syui/items/f6c34f05560cb8f715ee)
+
+

@@ -1,0 +1,115 @@
+<nav class="navbar navbar-default" role="navigation">
+
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{ root_url }}/">{{ site.title }}</a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li {% if page.navbar == 'Blog' %}class="active"{% endif %}>
+        <a href="{{ root_url }}/"><span class="icon-phoenix-logo"></span></a>
+        </li>
+
+        <li {% if page.navbar == 'Archives' %}class="active"{% endif %}>
+        <a href="{{ root_url }}/blog/archives">Archives</a>
+        </li>
+
+        <li {% if page.navbar == 'Linux/Unix' %}class="active"{% endif %}>
+          <a href="{{ root_url }}/middleman/">Linux</a>
+        </li>
+
+        <li class="dropdown">
+          <a href="{{ root_url }}/anime/" class="dropdown-toggle" >Anime <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ root_url }}/anime/">Anime</a></li>
+          <li><a href="https://soundcloud.com/syui-1">Vocaloid</a></li>
+        </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="{{ root_url }}/novel/" class="dropdown-toggle" >Novel <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ root_url }}/gitbook/">GitBook</a></li>
+          <li><a href="{{ root_url }}/code-guide/">Material</a></li>
+        </ul>
+        </li>
+
+        <li class="dropdown">
+        <a href="{{ root_url }}/blog/categories/tips/" class="dropdown-toggle" >Tips <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ root_url }}/blog/2014/04/11/macbookair">MacBook</a></li>
+          <li><a href="{{ root_url }}/blog/2014/03/26/blog-customize">Octopress</a></li>
+          <li><a href="{{ root_url }}/blog/2014/08/02/file-rename-cli">Script</a></li>
+          <li><a href="{{ root_url }}/blog/2014/06/03/iphone">iPhone</a></li>
+          <li><a href="{{ root_url }}/blog/2014/06/03/android">Nexus7</a></li>
+          <li><a href="{{ root_url }}/blog/2014/06/03/amazon">Amazon</a></li>
+        </ul>
+        </li>
+
+        <li class="dropdown">
+        <a href="{{ root_url }}/blog/categories/tool/" class="dropdown-toggle" >Tool <b class="caret"></b></a>
+
+        <ul class="dropdown-menu">
+          <li><a href="{{ root_url }}/blog/2014/06/15/airgoogleplus/">airgoogleplus</a></li>
+          <li><a href="{{ root_url }}/blog/2014/06/12/airchrome/">airchrome.zsh</a></li>
+          <li><a href="{{ root_url }}/blog/2014/06/25/vim-plugin-airsave/">airsave.vim</a></li>
+          <li><a href="{{ root_url }}/blog/2014/06/19/airindent-dot-vim/">airindent.vim</a></li>
+          <li><a href="{{ root_url }}/blog/2014/06/16/icon/">octopress-share-button</a></li>
+          <li><a href="{{ root_url }}/middleman/blog/2014/01/01/example-article.html">middlemap-simple-tempate</a></li>
+        </ul>
+        </li>
+
+        <li {% if page.navbar == 'About' %}class="active"{% endif %}><a href="{{ root_url }}/about">About</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+        <a class="subscribe-rss" href="https://twitter.com/syui__" target="_blank" title="subscribe via Twitter">
+          <span class="visible-xs">Twitter</span>
+          <span class="hidden-xs"><span class="icon-twitter"></span></span>
+        </a>
+        </li>
+        <li>
+        <a class="subscribe-rss" href="https://plus.google.com/109960187922006121644" target="_blank" title="subscribe via Google+" rel="publisher">
+          <span class="visible-xs">Google+</span>
+          <span class="hidden-xs"><span class="icon-googleplus"></span></span>
+        </a>
+        </li>
+
+        <li>
+        <a class="subscribe-rss" href="{{ site.subscribe_rss }}" title="subscribe via RSS">
+          <span class="visible-xs">RSS</span>
+          <span class="hidden-xs"><span class="icon-feed"></span></span>
+        </a>
+        </li>
+
+        {% if site.subscribe_email %}
+        <li>
+        <a class="subscribe-email" href="{{ site.subscribe_email }}" title="subscribe via email">
+          <span class="visible-xs">Email</span>
+          <img class="hidden-xs" src="{{ root_url }}/images/email.png" alt="Email">
+        </a>
+        </li>
+        {% endif %}
+      </ul>
+      {% if site.simple_search %}
+      <form class="search navbar-form navbar-right" action="{{ site.simple_search }}" method="GET">
+        <input type="hidden" name="q" value="site:{{ site.url | shorthand_url }}">
+        <div class="form-group">
+          <input class="form-control" type="text" name="q" placeholder="Search">
+        </div>
+      </form>
+      {% endif %}
+
+{% if site.lunr_search == true %}
+  {% include custom/lunr-search/search-form.html %}
+{% endif %}
+
+    </div>
+  </div>
+</nav>

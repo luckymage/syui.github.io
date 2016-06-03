@@ -1,0 +1,56 @@
+---
+layout: post
+title: "githubrepo-octopressというOctopress Pluginを導入してみた"
+date: 2014-06-15
+comments: true
+categories: [blog]
+tags: [octopress, github, html, css]
+---
+
+<img src="{{ root_url }}/images/more.png" alt="phoenix-power" align="left" width="100" height="100"><!--more--><br clear="all">
+
+{% githubrepo sotsy/githubrepo-octopress %}
+
+{% codeblock lang:bash %}
+$ curl -o ~/octopress/source/javascripts/jquery.githubRepoWidget.min.js https://raw.githubusercontent.com/JoelSutherland/GitHub-jQuery-Repo-Widget/master/jquery.githubRepoWidget.min.js -o ~/octopress/plugins/githubwidget.rb https://raw.githubusercontent.com/sotsy/githubrepo-octopress/master/githubwidget.rb
+
+$ vim ~/octopress/source/_includes/head.html
+{% endcodeblock %}
+
+`</head>`の上に以下のタグを挿入します。
+
+{% codeblock lang:html ~/octopress/source/_includes/head.html %}
+{% raw %}
+<script src="{{ root_url }}/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="{{ root_url}}/javascripts/jquery.githubRepoWidget.min.js"></script>
+<script>
+  $.noConflict()
+</script>
+{% endraw %}
+{% endcodeblock %}
+
+私の場合、リポジトリのタイトルは、`h3`タグではなく`h5`タグを使うことにします。
+
+これについては、`../source/javascripts/jquery.githubRepoWidget.min.js`を書き換えてください。
+
+次に、CSSも設定しておきます。
+
+{% codeblock lang:css %}
+h5 {
+word-wrap:break-word;font-family:helvetica,arial,sans-serif;font-weight:normal;font-size:16px;color:gray;margin:0;padding:10px 10px 10px 60px;background:url("http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/32/Logos-Github-icon.png") 7px center no-repeat; width: auto;
+}
+
+h5 .repo {font-weight:bold}
+h5 .repo {display:block}
+
+.github-box {margin-bottom: 25px}
+{% endcodeblock %}
+
+使い方は簡単で、以下の記述方式が使えるようになります。
+
+{% codeblock lang:bash %}
+{% raw %}
+{% githubrepo sotsy/githubrepo-octopress %}
+{% endraw %}
+{% endcodeblock %}
+

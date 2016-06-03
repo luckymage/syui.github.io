@@ -1,0 +1,67 @@
+---
+layout: post
+title: "Dockerを触ってみた"
+date: 2015-01-25
+comments: true
+categories: [os, virtual]
+tags: docker
+---
+<img src="{{ root_url }}/images/more.png" alt="phoenix-power" align="left" width="100" height="100">Dockerを触ってみました。<!--more--><br clear="all">
+
+`Docker`は、`VirtualBox`のコマンドを簡易化、拡張化したツールのことだと理解していましたが、違ってたようです。この辺りは、自前でやっていたので、余り使う気になれませんでしたが、今更ながら試してみました。
+
+`Docker`の仕組みは、VirtualBox上に軽量のLinux環境を作り、そのサーバーを操って、コンテナを実行するという感じらしいです。
+
+{% codeblock lang:bash %}
+{% raw %}
+$ brew install docker boot2docker
+
+# 補完をダウンロード
+$ cd ~/.zsh/functions/
+$ curl -OL https://raw.github.com/felixr/docker-zsh-completion/master/_docker
+$ exec zsh
+
+$ boot2docker up
+
+$ boot2docker status
+
+$ cat << EOF >> ~/.zshrc
+export DOCKER_HOST=tcp://$(boot2docker ip):2375 #boot2dockeripコマンドの結果を設定。
+export DOCKER_CERT_PATH=/Users/takaito/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1   
+EOF
+
+# イメージをダウンロード
+$ docker pull centos:centos6
+
+# イメージ一覧
+$ docker images 
+
+# 名前をつけてイメージを起動する
+$ docker run -t -i -d --name centos6 centos:centos6 /bin/bash
+
+# 名前でイメージにアクセスする
+$ docker attach centos6
+
+# Apacheをインストール
+$ yum update && yum install httpd && chkconfig httpd on && service httpd start
+$ exit
+
+# コミットしていつでも呼び出せるようにする
+$ docker commit centos6 syui/centos6-apache
+
+# バックグラウンドで保存したコミットを起動
+$ docker run -t -i -d -p 80:80 --name centos6-up syui/centos6-apache /sbin/init
+
+# 立ち上げたサーバーにアクセスしてみる
+$ ping `boot2docker ip`
+$ w3m `boot2docker ip`
+{% endraw %}
+{% endcodeblock %}
+
+ネットワーク周りのデフォルト設定どうなっているのだろうとか考えると、場合によっては、危険かもしれないなあと思いました。調べてみないとわからないですが。
+
+また、今のところ、`VirtualBox`が用意してくれているコマンドを使えばできることしかやってないので、それ以外でどの辺りが便利になっているのかは、把握できていません。ただ、イメージのバージョン管理あたりが便利になっているような気がしました。
+
+https://docs.docker.com/userguide
+

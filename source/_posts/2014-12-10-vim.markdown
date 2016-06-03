@@ -1,0 +1,119 @@
+---
+layout: post
+title: "Vimのマークについて"
+date: 2014-12-10
+comments: true
+categories: editor
+tags: vim
+---
+<img src="{{ root_url }}/images/more.png" alt="phoenix-power" align="left" width="100" height="100">この記事は[Vim Advent Calendar 2014](http://qiita.com/advent-calendar/2014/vim)の10日目の記事です！Vimのマークについて最近試してみたプラグインなどを紹介します。<!--more--><br clear="all">
+
+##Vimのマークとは
+
+ここで言う、Vimのマークとは、Vimで使う`:mark`コマンド、またはそれに類する機能のことを言います。
+
+マークした箇所への移動を提供します。
+
+皆さん、この機能って使ってますか。
+
+多分、使ってない方が多いと思われるのですが、巨大なファイルを扱うことが多い時は、この機能は結構便利なのです。
+
+ここで、特徴的なのは、指定する文字列である`[a-z]`,`[A-Z]`,`[0-9]`で内容が異なることです。
+
+例えば、`:mark a`とするのと、`:mark A`とするのとでは、ファイル間の移動を実現するか否かに違いが出てきます。
+
+具体的には、小文字はマークの移動できませんが、大文字は移動できます。
+
+また、前回終了時の行は、`0`にマークされていますので、`'0`で飛ぶことができたりします。
+
+ただし、マークを残すかどうかは、`set viminfo`の設定にもよりますので注意してください。
+
+マークした箇所は、`:marks`で確認できるようになっています。
+
+##最近使いはじめたプラグイン
+
+[vim-showmarks](https://github.com/jacquesbh/vim-showmarks)
+
+このプラグインは、マークを行番の横に表示してくれたりします。
+
+![](http://lh6.ggpht.com/-oN_HPu9mUpM/VIc73pnQ-tI/AAAAAAAAAJI/YAFRhqe-16w/s0/%2525E3%252582%2525B9%2525E3%252582%2525AF%2525E3%252583%2525AA%2525E3%252583%2525BC%2525E3%252583%2525B3%2525E3%252582%2525B7%2525E3%252583%2525A7%2525E3%252583%252583%2525E3%252583%252588.png)
+
+{% raw %}
+    NeoBundle 'jacquesbh/vim-showmarks'
+{% endraw %}
+
+{% codeblock lang:vim ~/.vimrc %}
+{% raw %}
+nn [Mark] <Nop>
+nm <leader>m [Mark]
+
+" jacquesbh/vim-showmarks {{{
+" 最初からマークを表示する
+aug show-marks-sync
+        au! 
+        au BufReadPost * sil! ShowMarksOnce
+aug END
+
+" マークと表示の更新を同時に行う
+nn [Mark] :<C-u>call <SID>AutoMarkrement()<CR><CR>:ShowMarksOnce<CR>
+" マークの全削除を行うコマンドを設定する
+com! -bar MarksDelete sil :delm! | :delm 0-9A-Z | :wv! | :ShowMarksOnce
+" マークの削除
+nn <silent>[Mark]d :MarksDelete<CR>
+" }}}
+{% endraw %}
+{% endcodeblock %}
+
+##現在の設定
+
+最終的に、マーク関連の設定は以下のようになりました。
+
+`<leader>m`でマークし、`<leader>mm`で飛びます。`<leader>md`で削除です。
+
+{% raw %}
+    NeoBundle 'jacquesbh/vim-showmarks'
+    NeoBundle 'tacroe/unite-mark'
+{% endraw %}
+
+
+{% codeblock lang:vim ~/.vimrc %}
+{% raw %}
+" marks {{{
+set viminfo='50,\"1000,:0,n~/.vim/viminfo
+set foldmethod=marker
+let g:showmarks_marks_notime = 1
+let g:unite_source_mark_marks = '01abcABCDEFGHIJKLNMOPQRSTUVWXYZ'
+let g:showmarks_enable       = 0
+if !exists('g:markrement_char')
+    let g:markrement_char = [
+    \     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+    \     'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+    \     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+    \     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+    \ ]
+en
+
+fu! s:AutoMarkrement()
+    if !exists('b:markrement_pos')
+        let b:markrement_pos = 0
+    else
+        let b:markrement_pos = (b:markrement_pos + 1) % len(g:markrement_char)
+    en
+    exe 'mark' g:markrement_char[b:markrement_pos]
+    echo 'marked' g:markrement_char[b:markrement_pos]
+endf
+
+aug show-marks-sync
+        au! 
+        au BufReadPost * sil! ShowMarksOnce
+aug END
+
+nn [Mark] <Nop>
+nm <leader>m [Mark]
+nn <silent> [Mark]m :Unite mark<CR>
+nn [Mark] :<C-u>call <SID>AutoMarkrement()<CR><CR>:ShowMarksOnce<CR>
+com! -bar MarksDelete sil :delm! | :delm 0-9A-Z | :wv! | :ShowMarksOnce
+nn <silent>[Mark]d :MarksDelete<CR>
+" }}}
+{% endraw %}
+{% endcodeblock %}

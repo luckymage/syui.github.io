@@ -1,0 +1,206 @@
+---
+layout: post
+title: "共有ボタン"
+date: 2014-06-16 03:50:29 +0900
+comments: true
+categories: [blog]
+tags: [icon, github, octopress, feedly, button]
+---
+
+<img src="{{ root_url }}/images/more.png" alt="phoenix-power" align="left" width="100" height="100">共有ボタンがなかなか見つからないので、自作してみました。<!--more--><br clear="all">
+
+###octopress-share-button
+
+  <a href="http://b.hatena.ne.jp/add?mode=confirm&url={{ site.url }}{{ page.url }}&title={{ page.title }}"><span class="entypo-vkontakte"></span><span class="hatena-name">Hatena</span></a>
+  <a href="https://twitter.com/share?url={{ site.url }}{{ page.url }}&text={{ page.title }}&via=syui"><span class="entypo-twitter"></span><span class="twitter-name">Twitter</span></a>
+  <a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}"><span class="entypo-gplus"></span><span class="googleplus-name">Google+</span></a>
+  <a href="http://www.feedly.com/home#subscription/feed/{{ site.url }}/atom.xml"><span class="entypo-rss"></span><span class="feedly-name">Feedly</span></a>
+
+ソースは、GitHubに置きました。
+
+{% githubrepo syui/octopress-share-button %}
+
+####install
+
+インストールは以下のとおりです。`setup.sh`も用意してあるので、インストールを簡易化したい方は、そちらの方を見てください。
+
+{% codeblock lang:bash %}
+$ cd /path/to/octopress/source/_includes/post
+
+$ curl -O https://raw.githubusercontent.com/syui/octopress-share-button/master/share_button_syui.html
+
+$ cd /path/to/octopress/sass/partials
+
+$ curl -O https://raw.githubusercontent.com/syui/octopress-share-button/master/_icon.scss
+{% endcodeblock %}
+
+####setup.sh
+
+{% codeblock lang:bash %}
+$ git clone https://github.com/syui/octopress-share-button
+
+$ cd !$:t
+
+$ ./setup.sh
+{% endcodeblock %}
+
+####setting
+
+一応、分離して、フォント、アイコン単体で使えるようになっています。
+
+{% codeblock lang:css _config.yml %}
+# Share Button @syui
+# 全体の有効、無効
+share_button_syui: true
+
+# 各アイコンの有効、無効
+share_button_hatena: true
+share_button_twitter: true
+share_button_gplus: false
+share_button_rss: false
+{% endcodeblock %}
+
+あとは、表示したい場所、具体的には、`source/_layouts/post.html`に以下のタグを挿入します。
+
+{% raw %}
+      {% unless page.share_button_syui == false %}
+        {% include post/share_button_syui.html %}
+      {% endunless %}
+{% endraw %}
+
+
+####css
+
+CSSは以下の様な感じになっています。
+
+
+{% codeblock lang:css _icon.scss %}
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+
+//font
+span.entypo-twitter {
+font-size: 15px;
+color: #fff;
+padding: 10px;
+margin: 5px 0px;
+background-color: #999999;
+}
+
+span.entypo-gplus {
+font-size: 15px;
+color: #fff;
+padding: 10px;
+margin: 5px 0px;
+background-color: #999999;
+}
+
+span.entypo-vkontakte {
+font-size: 15px;
+color: #fff;
+padding: 10px;
+margin: 5px 0px;
+background-color: #999999;
+word-break: break-all;
+}
+
+span.entypo-rss {
+font-size: 15px;
+color: #fff;
+padding: 10px;
+margin: 5px 0px;
+background-color: #999999;
+}
+
+//link
+a:hover {
+text-decoration: none;
+}
+
+span.entypo-twitter:hover {
+transition: all 0.3s;
+color: #66CCFF;
+}
+span.twitter-name:hover {
+opacity: 0.6;
+}
+
+span.entypo-gplus:hover {
+transition: all 0.3s;
+color: #CC3300;
+}
+span.googleplus-name:hover {
+opacity: 0.6;
+}
+
+span.entypo-vkontakte:hover {
+transition: all 0.3s;
+color: #3366CC;
+}
+span.hatena-name:hover {
+opacity: 0.6;
+}
+
+span.entypo-rss:hover {
+transition: all 0.3s;
+color: #66FF33;
+//color: #FF9933;
+}
+span.feedly-name:hover {
+opacity: 0.6;
+}
+
+//title
+span.twitter-name {
+font-size: 15px;
+text-align:center;
+color: #fff;
+padding: 10px;
+margin: 5px 0px;
+background-color: #66CCFF;
+line-height:50px;
+word-break: break-all;
+}
+
+span.googleplus-name {
+font-size: 15px;
+text-align:center;
+color: #fff;
+padding: 10px;
+margin: 5px 0px;
+background-color: #CC3300;;
+line-height:50px;
+word-break: break-all;
+}
+
+span.hatena-name {
+font-size: 15px;
+text-align:center;
+color: #fff;
+padding: 10px;
+margin: 5px 0px;
+background-color: #3366CC;
+line-height:50px;
+word-break: break-all;
+}
+
+span.feedly-name {
+font-size: 15px;
+text-align:center;
+color: #fff;
+padding: 10px;
+margin: 5px 0px;
+background-color: #66FF33;
+line-height:50px;
+word-break: break-all;
+}
+{% endcodeblock %}
+
+http://weloveiconfonts.com/
+
+全体としてリンクを貼りたい場合は、[div](http://syui.co/blog/2014/03/26/blog-customize/#page21)を使ってみてください。
+

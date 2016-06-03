@@ -1,0 +1,252 @@
+---
+layout: post
+title: "ブログの変更点 vol.2"
+date: 2014-06-17
+comments: true
+categories: [blog]
+tags: [octopress, github, css, html]
+---
+
+
+<img src="{{ root_url }}/images/more.png" alt="phoenix-power" align="left" width="100" height="100">最近、ブログのカスタマイズにハマっています。<!--more--><br clear="all">
+
+##Share Button
+
+共有ボタン、具体的には、TwitterのTweet Buttonとか、はてなのBookmark Buttonとか、そういうのは、あまり、好きではないのだけど、設置することにしました。
+
+何故かというと、現在、はてなブックマークされた数がゼロであり、これだとサイドバーに設置したはてなブログパーツの意味がないからです。
+
+せめて、全部は埋まるようにしたい...。
+
+ここで、Octopressでは、共有ボタンを`post`の`footer`部分に設置する設定が存在します。はてなは、これを利用して設置します。
+
+{% codeblock lang:html source/_includes/post/sharing.html %}
+{% raw %}
+<div class="sharing">
+  <a href="http://b.hatena.ne.jp/entry/{{ site.url }}{{ page.url }}" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  {% if site.twitter_tweet_button %}
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="{{ site.url }}{{ page.url }}" data-via="{{ site.twitter_user }}" data-counturl="{{ site.url }}{{ page.url }}" >Tweet</a>
+  {% endif %}
+  {% if site.google_plus_one %}
+  <div class="g-plusone" data-size="{{ site.google_plus_one_size }}"></div>
+  {% endif %}
+  {% if site.facebook_like %}
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+{% endif %}
+</div>
+{% endraw %}
+{% endcodeblock %}
+
+ここで、`site.hoge`というのは、`_config.yml`で設定できる記述になります。
+
+例えば、`if site.google_plus_one`の場合は、以下の様の設定します。
+
+``` css _config.yml
+google_plus_one: ture
+```
+
+また、Hatena Bookmarkを設定ファイルで設定したいのなら、HTMLを以下のようにする設定することが分かります。
+
+{% codeblock lang:html %}
+{% raw %}
+{% if site.hatena_bookmark %}
+<a href="http://b.hatena.ne.jp/entry/{{ site.url }}{{ page.url }}" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+{% endif %}
+{% endraw %}
+{% endcodeblock %}
+
+
+``` css _config.yml
+hatena_bookmark: ture
+```
+
+##Web Font
+
+**Web Fontを使った共有ボタンの作成**
+
+しかし、公式で各サービスが提供する共有ボタンは、非常にバラつきがあります。
+
+これでは、自分がブログを開くたびにガッカリすることになります。そもそも、共有ボタン自体、個人的には、設置したくないのです。
+
+ということで、独自に作成してみることにしました。この際、Web Fontを使います。
+
+https://github.com/syui/octopress-share-button
+
+**共有ボタンで使える各サービスのURL**
+
+|title | url
+|---|---|
+|Twitter | [https://twitter.com/intent/tweet?text=TITLE&url=URL&via=TWITTER-HANDLE](https://twitter.com/intent/tweet?text=TITLE&url=URL&via=TWITTER-HANDLE)
+|Google+ | [https://plus.google.com/share?url=URL](https://plus.google.com/share?url=URL)
+|Facebook | [https://www.facebook.com/sharer/sharer.php?u=URL](https://www.facebook.com/sharer/sharer.php?u=URL)
+|Hatena | [http://b.hatena.ne.jp/add?mode=confirm&url=URL&title=TITLE](http://b.hatena.ne.jp/add?mode=confirm&url=URL&title=TITLE)
+|Linkedin | [https://www.linkedin.com/shareArticle?mini=true&url=URL&title=TITLE&summary=YOUR-SUMMARY&source=YOUR-URL](https://www.linkedin.com/shareArticle?mini=true&url=URL&title=TITLE&summary=YOUR-SUMMARY&source=YOUR-URL)
+|Pin |[https://pinterest.com/pin/create/button/?url=URL&description=YOUR-DESCRIPTION&media=YOUR-IMAGE-SRC](https://pinterest.com/pin/create/button/?url=URL&description=YOUR-DESCRIPTION&media=YOUR-IMAGE-SRC)
+|VK | [https://vk.com/share.php?url=URL&title=TITLE&description=YOUR-DESCRIPTION&image=YOUR-IMAGE-SRC&noparse=true](https://vk.com/share.php?url=URL&title=TITLE&description=YOUR-DESCRIPTION&image=YOUR-IMAGE-SRC&noparse=true)
+|Xing | [https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=URL](https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=URL)
+|Tumblr |[http://www.tumblr.com/share](http://www.tumblr.com/share)
+
+**最終的なHTMLタグ**
+
+{% codeblock lang:html %}
+{% raw %}
+{% if site.share_button_syui %}
+<div class="share_button_syui">
+  <a href="http://b.hatena.ne.jp/add?mode=confirm&url={{ site.url }}{{ page.url }}&title={{ page.title }}" target="_blank">{% if site.share_button_hatena %}<span class="entypo-vkontakte"></span>{% endif %}<span class="hatena-name">Bookmark</span></a>
+  <a href="https://twitter.com/share?url={{ site.url }}{{ page.url }}&text={{ page.title }}&via=syui" target="_blank">{% if site.share_button_twitter %}<span class="entypo-twitter"></span>{% endif %}<span class="twitter-name">Tweet</span></a>
+  <a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" target="_blank">{% if site.share_button_gplus %}<span class="entypo-gplus"></span>{% endif %}<span class="googleplus-name">+1</span></a>
+  <a href="http://www.feedly.com/home#subscription/feed/{{ site.url }}{{ site.subscribe_rss }}" target="_blank">{% if site.share_button_rss %}<span class="entypo-rss"></span>{% endif %}<span class="feedly-name">Feedly</span></a>
+</div>
+{% endif %}
+{% endraw %}
+{% endcodeblock %}
+
+**Web Fontの使用中止**
+
+作成したボタンは、アイコンとフォントに分けられ、設定ファイルで設定できるようになっています。
+
+Web FontのServerからの応答が悪い時があるので、アイコンの方は、使うのを止めました。
+
+```
+  # Share Button @syui
+  share_button_syui: true
+
+  share_button_hatena: false
+  share_button_twitter: false
+  share_button_gplus: false
+  share_button_rss: false
+```
+
+しかし、現在の共有ボタン、現在のデザインと見事に合わないです。
+
+一応、タブレットやスマホで押しやすいように、色と大きさを設定したつもりではありますが、パソコンで見ると、あまりに酷い。
+
+まず、カラーが濃い。次に、ボタンがでかい。
+
+小さい画面では、色が濃いほうが分かりやすいし、でかい方が押しやすいので、仕方のないことかもしれませんが、あまり納得できてません。
+
+色は灰色とかで統一した方が良かったのかもしれません。
+
+しかし、それでは、各ボタンの判別がやりにくいしな...。
+
+##Menu Animation
+
+下から競り上がってくる感じのメニューエフェクトを追加してみました。
+
+選択した項目に適応されます。
+
+正直、グラデーション効果には、疑問があったのですが、これで一応解決です。
+
+徐々にグラデーションが広がっていくので、突発的な印象は少なく自然に見えるようになりました。
+
+{% codeblock lang:css %}
+{% raw %}
+.navbar-default .navbar-nav>.active>a {
+height: 53px;
+color: #000;
+border-bottom: solid 4px #428bca;
+box-shadow: none;
+-webkit-box-shadow: none;
+
+//animation
+background-image: linear-gradient(to bottom, #f8f8f8 70%,#428bca 400%);
+transition: all 0.3s;
+-webkit-animation: Rotate 0.7s ease-out;
+-webkit-animation-iteration-count: 1;
+-moz-animation: Rotate 0.7s ease-out;
+-moz-animation-iteration-count: 1;
+-ms-animation: Rotate 0.7s ease-out;
+-ms-animation-iteration-count: 1;
+-o-animation: Rotate 0.7s ease-out;
+-o-animation-iteration-count: 1;
+animation-fill-mode:forwards;
+-webkit-animation-fill-mode:forwards;
+-moz-animation-fill-mode:forwards;
+-ms-animation-fill-mode:forwards;
+-o-animation-fill-mode:forwards;
+}
+
+@-webkit-keyframes Rotate {
+100% {
+background-image: linear-gradient(to bottom, #f8f8f8 10%,#428bca 400%);
+}
+
+90% {
+background-image: linear-gradient(to bottom, #f8f8f8 20%,#428bca 400%);
+}
+
+80% {
+background-image: linear-gradient(to bottom, #f8f8f8 30%,#428bca 400%);
+}
+
+70% {
+background-image: linear-gradient(to bottom, #f8f8f8 40%,#428bca 400%);
+}
+
+60% {
+background-image: linear-gradient(to bottom, #f8f8f8 50%,#428bca 400%);
+}
+
+50% {
+background-image: linear-gradient(to bottom, #f8f8f8 60%,#428bca 400%);
+}
+
+40% {
+background-image: linear-gradient(to bottom, #f8f8f8 70%,#428bca 400%);
+}
+}
+
+@keyframes Rotate { 100% { background-image: linear-gradient(to bottom, #f8f8f8 10%,#428bca 400%); } 90% { background-image: linear-gradient(to bottom, #f8f8f8 20%,#428bca 400%); } 80% { background-image: linear-gradient(to bottom, #f8f8f8 30%,#428bca 400%); } 70% { background-image: linear-gradient(to bottom, #f8f8f8 40%,#428bca 400%); } 60% { background-image: linear-gradient(to bottom, #f8f8f8 50%,#428bca 400%); } 50% { background-image: linear-gradient(to bottom, #f8f8f8 60%,#428bca 400%); } 40% { background-image: linear-gradient(to bottom, #f8f8f8 70%,#428bca 400%); } }
+@-moz-keyframes Rotate { 100% { background-image: linear-gradient(to bottom, #f8f8f8 10%,#428bca 400%); } 90% { background-image: linear-gradient(to bottom, #f8f8f8 20%,#428bca 400%); } 80% { background-image: linear-gradient(to bottom, #f8f8f8 30%,#428bca 400%); } 70% { background-image: linear-gradient(to bottom, #f8f8f8 40%,#428bca 400%); } 60% { background-image: linear-gradient(to bottom, #f8f8f8 50%,#428bca 400%); } 50% { background-image: linear-gradient(to bottom, #f8f8f8 60%,#428bca 400%); } 40% { background-image: linear-gradient(to bottom, #f8f8f8 70%,#428bca 400%); } }
+@-o-keyframes Rotate { 100% { background-image: linear-gradient(to bottom, #f8f8f8 10%,#428bca 400%); } 90% { background-image: linear-gradient(to bottom, #f8f8f8 20%,#428bca 400%); } 80% { background-image: linear-gradient(to bottom, #f8f8f8 30%,#428bca 400%); } 70% { background-image: linear-gradient(to bottom, #f8f8f8 40%,#428bca 400%); } 60% { background-image: linear-gradient(to bottom, #f8f8f8 50%,#428bca 400%); } 50% { background-image: linear-gradient(to bottom, #f8f8f8 60%,#428bca 400%); } 40% { background-image: linear-gradient(to bottom, #f8f8f8 70%,#428bca 400%); } }
+
+//@keyframes Rotate
+//@-webkit-keyframes Rotate
+//@-moz-keyframes Rotate
+//@-ms-keyframes Rotate
+//@-o-keyframes Rotate
+{% endraw %}
+{% endcodeblock %}
+
+
+本当はもうちょっと遅いほうが好みなのですが、遅すぎると一切気づかれない可能性のほうが高いです。しがって、私は、カラーは自分が考えるよりもちょっとだけ濃く、エフェクトはちょっとだけ速くするようにしています。
+
+
+##自分のブログはなぜダサいのか?
+
+他のOctopressブログを最近、よく見るようになったのですが、いくらカスタマイズしても、なぜか自分のブログはダサいと感じてしまいます。
+
+これは、Octopressに限らずですが、なぜ自分のブログは、ダサく感じてしまうのでしょう。
+
+まず挙げられるのが、他人のブログが新鮮だということです。
+
+特に、Octopressブログは、デフォルトやテーマが非常によく考えられているので、カスタマイズしてなくても、どのブログもやっぱりカッコイイ。
+
+あと、自分のブログなだけに、悪い部分がよく目につくからダサいと感じてしまうのかもしれません。
+
+自分のブログも気に入らない部分をもうちょっと改善していきたいです。
+
+具体的には、①メニューバーに外部リンクと内部リンクが混在しているので、それを解消すること、②見出しタグ(特にH2)がダサいので、変更すること、③タグクラウドを導入すること、④サイドバーの基本デザインを見直すこと、⑤TwitterやGistの省略記法が使えるようにすることなどを考えています。
+
+①については、外部リンク、例えば、Twitterへのリンクなどは、右にしたい。これは、アイコンにすることを考えています。
+
+②については、見出しタグで良さそうなのを探してみることにします。
+
+③については、前に一度、面倒くさくて挫折してるんですよね。Octopressには、カテゴリーがあります。タグと同時使用もできるみたいなのですが、ますます複雑になってしまいそうで消極的です。現時点では、カテゴリーをタグのように使用し、サイドバーには、このアイコンを並べることだけを考えています。
+
+④については、全体的なレイアウトと今のサイドバーの基本デザインは、合わないんですよね。これは、テーマのものをそのまま使用していて、当時は合っていたのですが...。多分、色を変えるだけでOKな気がするので、それをやってみる予定。
+
+⑤については、プラグインがあったのですが、面倒だったので、今まで導入していませんでした。導入します。
+
+##何かを順序立てて書くのは難しい
+
+カスタマイズの際には、Octopressのカスタマイズについて順序立てて書いてくれている記事にとても助けられました。
+
+しかし、私が書く記事のように、思ったこと、やったことを適当に並べることよりも、順序立てて書くことのほうがはるかに難しいんですよね。
+
+その点で、しっかりと細かな順序とか設定とかを書いてくれているブログは、強いなと思いました。
+
+今までは、これ、他の人が読んでもわからないだろうなという、個人の備忘録になっていましたが、細かな部分、ハマりそうな部分とかをしっかりと書いていきたい。
+
+見出しとは関係ありませんが、Octopressのカスタマイズをやってみると、色々とどういう仕組で動いてるのか何となく分かってくるもので、ないものは自分で作っていけたらとも思います。
+

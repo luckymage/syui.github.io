@@ -1,0 +1,149 @@
+---
+layout: post
+title: "Octopressに独自ドメインを設定する方法"
+date: 2014-06-04
+comments: true
+categories: [blog]
+tags: [octopress, dns, domain, github]
+---
+
+
+<img src="{{ root_url }}/images/more.png" alt="phoenix-power" align="left" width="100" height="100">独自ドメインを設定する方法とドメインの活用方法など。<!--more--><br clear="all">
+
+
+
+##Domain
+
+###独自ドメインの取得
+
+まず、独自ドメインの取得からです。
+
+おすすめは、`.com`や`.org`です。なぜなら、Google+ PagesのカスタムURLを取得の際、このドメインの場合はドメイン部分が省略されることを確認しているからです。
+
+<a href="http://www.onamae.com/service/" target="_blank">お名前.com</a>
+
+注意点としては、`Whois情報公開代行`を使用しないと、ドメイン所有者の情報が`whois`コマンドなどを使い取得される恐れがあることです。
+
+{% codeblock lang:bash whois http://www.onamae.com/service/d-regist/option.html LINK %}
+$ whois Onamae.com
+Registrant Name: Onamae Taro
+Registrant Organization: Onamae.com
+Registrant City: Shibuya-ku
+Registrant State: Tokyo
+Registrant Postal Code: 123-4567
+Registrant Country: JP
+Registrant Phone: 03-1234-5678
+Registrant Email: taro@onamae.com
+{% endcodeblock %}
+
+###DNS
+
+私の場合は、`お名前.com`なので、そちらで設定します。
+
+
+トップレベルのドメインかそうでないかで設定が異なります。
+
+トップレベル、例えば、`username.com`の場合は、`Aレコード`でIPアドレスを`204.232.175.78`に設定します。
+
+{% codeblock lang:bash トップレベル http://www.onamae.com/option/dnsrecord LINK %}
+username.com. 3600 IN A 204.232.175.78.
+{% endcodeblock %}
+
+
+トップレベル以外、例えば、`blog.username.com`の場合は、`CNAME`を設定します。
+
+{% codeblock lang:bash トップレベル以外 http://help.onamae.com/app/answers/detail/a_id/7909 LINK %}
+blog.username.com. IN CNAME username.github.io.
+{% endcodeblock %}
+
+http://octopress.org/docs/deploying/github/
+
+
+追記:
+
+もっと高速な設定があるというメールがGitHubから頻繁に届くので、トップレベルドメインのDNSを`199.27.73.133`に変更。
+
+{% codeblock lang:bash トップレベル http://www.onamae.com/option/dnsrecord LINK %}
+username.com. 3600 IN A 199.27.73.133.
+{% endcodeblock %}
+
+
+###GitHub Pages
+
+{% codeblock lang:bash %}
+{% raw %}
+$ cd octopress
+
+$ echo 'username.com' > source/CNAME
+
+$ cat source/CNAME
+
+$ rake gen_deploy
+{% endraw %}
+{% endcodeblock %}
+
+https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages
+
+
+###RSS
+
+RSS FeedのURLも変更しておくとよいでしょう。しかし、こちらは別に変更しなくてもブラウザを開くと、リダイレクトされますので、変更しなくても良いです。
+
+
+####変更前
+
+{% codeblock lang:bash _config.yml %}
+url: http://username.github.io
+{% endcodeblock %}
+
+####変更後
+
+{% codeblock lang:bash _config.yml %}
+url: http://username.com
+{% endcodeblock %}
+
+
+##その他
+
+###Google+ Pages
+
+ブログに独自ドメインを設定したら、ついでに、 <a href="http://www.google.com/+/business/" target="_blank">Google+ Pages</a> を作成し、ブログとリンク後、カスタムURLを取得しておくと便利です。
+
+ここで、ドメイン部分が`.com`や`.org`の場合は、ドメインが省略されたカスタムURLを取得できることを確認しています。
+
+例えば、`syui.com`の場合は、`https://plus.google.com/+syui/`のようになります。
+
+これについては、以下の記事に書きました。
+
+<a href="http://syui.co/blog/2014/06/03/googleplus/" target="_blank">Google+との連携を考える</a>
+
+
+###Google App Business
+
+####Google App Businessの無料登録
+
+ついでに、ドメインを <a href="http://www.google.co.jp/intx/ja/enterprise/apps/business/" target="_blank">Google App Business(無料)</a> に登録してみると便利です。
+
+30日間有効に`Google App Business`が使えます。
+
+ドメインの所有権の確認 https://support.google.com/a/answer/60216?hl=ja
+
+TXT レコード - お名前.com https://support.google.com/a/answer/1659753?hl=ja
+
+MX レコードを設定する https://support.google.com/a/answer/140034?hl=ja
+
+ドメインを取得してみると、色々と試せたので、面白かったです。
+
+
+####Google+ Domains API
+
+https://developers.google.com/+/domains/
+
+Google Appsで同じドメイン内のユーザーを扱うためのAPIです。
+
+通常の <a href="https://developers.google.com/+/api/?hl=ja" target="_blank">Google+ API</a> よりも遥かに権限が大きく、扱えるデータが多いです。
+
+参考:
+
+<a href="http://blog.awairo.net/blog/2013/12/14/custom-domain-for-gh-pages/" target="_blank">GitHub Pagesで独自ドメインを使う方法</a>
+

@@ -1,0 +1,17 @@
+.bundle
+.DS_Store
+_deploy
+public
+sass.old
+source.old
+source/_stash
+source/stylesheets/screen.css
+vendor
+node_modules
+Gemfile.lock
+.google-api.yaml
+.analytics-cache
+.appboxcache
+.gist-cache
+.pygments-cache
+.sass-cache

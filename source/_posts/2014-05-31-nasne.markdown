@@ -1,0 +1,31 @@
+---
+layout: post
+title: "nasneを使った録画のキャプチャ方法"
+date: 2014-05-31
+comments: true
+categories: [mobile]
+tags: [vita, psp, sony, nasne, torne, tv, video]
+---
+
+
+<img src="{{ root_url }}/images/more.png" alt="phoenix-power" align="left" width="100" height="100">nasneとiOSを使った録画のキャプチャ方法を紹介します。<!--more--><br clear="all">
+
+
+VITAでキャプチャできないのが不便すぎるわけですが、iPhone、iPadを使うとnasneにあるファイルの再生及び、キャプチャができます。
+
+<a href="https://itunes.apple.com/jp/app/media-link-player-for-dtv/id635112846" target="_blank">Media Link Player for DTV</a>
+
+
+
+このアプリでできることは、著作権保護技術（DTCP-IP）対応のDLNAクライアント機器として、基本的な操作ができるようになります。
+
+具体的には、DLNAサーバーに保存してあるファイルの再生やファイルのコピーができます。
+
+ただし、コピーする場合は、DTCP-IPによる回数制限がありますので注意してください。
+
+`Media Link Player for DTV`には、Android用のアプリも存在しているようです。キャプチャできるかどうかは知りませんが。
+
+{% appbox googleplay screenshots jp.co.alpha.dlna.mlpfordtv %}
+
+これで、アニメの感想記事も捗りそうです。
+

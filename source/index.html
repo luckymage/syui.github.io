@@ -1,0 +1,47 @@
+---
+layout: default
+navbar: Blog
+noToc: true
+---
+
+<div class="row">
+  <div class="page-content {% unless site.default_asides == empty and site.blog_index_asides == empty %}col-md-9{% else %}col-md-12{% endunless %}">
+
+    <div class="blog-index">
+      {% assign index = true %}
+      {% for post in paginator.posts %}
+      {% assign content = post.content %}
+        <article class="post" onclick="location.href=&#34;{{ root_url }}{{ post.url }}&#34;;" style="cursor: pointer;">
+          {% include article.html %}
+        </article>
+      {% endfor %}
+    </div>
+
+    <ul class="pager">
+      {% if paginator.next_page %}
+        <li class="previous"><a href="{{paginator.next_page}}"><span class="octicon octicon-chevron-left" style="font-size:50px"></span></a></li>
+      {% else %}
+        <li class="previous disabled"><a href="#"><span class="octicon octicon-chevron-left" style="font-size:50px"></span></a></li>
+      {% endif %}
+      <li><a href="/blog/archives"><span class="icon-phoenix" style="font-size:50px"></span></a></li>
+      {% if paginator.previous_page %}
+        <li class="next"><a href="{{paginator.previous_page}}"><span class="octicon octicon-chevron-right" style="font-size:50px"></span></a></li>
+      {% else %}
+        <li class="next disabled"><a href="#"><span class="octicon octicon-chevron-right" style="font-size:50px"></span></a></li>
+      {% endif %}
+    </ul>
+
+  </div>
+
+  {% unless site.default_asides == empty and site.blog_index_asides == empty %}
+    <aside class="sidebar col-md-3">
+      {% if site.blog_index_asides.size %}
+        {% include_array blog_index_asides %}
+      {% else %}
+        {% include_array default_asides %}
+      {% endif %}
+    </aside>
+  {% endunless %}
+</div>
+
+<div class='mobile-footer-up'><a href='#top'><span class="mega-octicon octicon-chevron-up"></span></a></div>

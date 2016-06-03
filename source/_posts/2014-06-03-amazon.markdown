@@ -1,0 +1,243 @@
+---
+layout: post
+title: "Amazon"
+date: 2014-06-03
+comments: true
+categories: [tips]
+tags: [amazon, items, bag, book, private]
+---
+
+
+<img src="{{ root_url }}/images/more.png" alt="phoenix-power" align="left" width="100" height="100">Amazonで購入できるおすすめの商品について紹介します。<!--more--><br clear="all">
+
+##Items
+
+###Gadget
+
+####[PlayStation Vita Wi-Fiモデル ブラック](http://www.amazon.co.jp/dp/B00F27JDTU) ￥ 19,529
+
+![](http://ecx.images-amazon.com/images/I/41FXZeRlZyL._SL500_SS200_.jpg)
+
+####[GRANDSTONE バランス 多機能ワンショルダーバッグ(大)](http://www.amazon.co.jp/dp/B00E3NY2XG/) ￥ 4,177
+
+<img src="http://ecx.images-amazon.com/images/I/81PisGSVQfL._SS200_.jpg">
+
+####[Adonit Jot Mini スマートフォン&タブレットPC用スタイラスペン](http://www.amazon.co.jp/dp/B006ZTLEDM) ￥ 2,280
+
+<img src="http://ecx.images-amazon.com/images/I/71-lp4cRPOL._SS200_.jpg">
+
+####[PLANTRONICS Bluetooth ステレオヘッドセット BackBeat GO2](http://www.amazon.co.jp/dp/B00EXY1RS8) ￥ 6,512
+
+![](http://ecx.images-amazon.com/images/I/31DEj7MEfzL._SL500_SS200_.jpg)
+
+####[Transcend USB 2.0 OTG対応 USBメモリ 32GB シルバー](http://www.amazon.co.jp/dp/B00GXYKVM4) ￥ 2,400
+
+![](http://ecx.images-amazon.com/images/I/31EgQXxqCCL._SS200_.jpg)
+
+####[LOGICOOL ワイヤレス レーザー式 2ボタン M555b](http://www.amazon.co.jp/dp/B002DGSNX0/) ￥ 4,640
+
+![](http://ecx.images-amazon.com/images/I/41vDMvlZ5bL._SL500_SS200_.jpg)
+
+###Life
+
+####[ニベア クリーム 大缶 169g](http://www.amazon.co.jp/dp/B000FQMT8K) ￥ 511
+
+![](http://ecx.images-amazon.com/images/I/41ZD7IdmiaL._SL500_SS200_.jpg)
+
+##Books
+
+###Programming
+
+####[実践Vim 思考のスピードで編集しよう!](http://www.amazon.co.jp/dp/4048916599) ￥ 3,024
+
+![](http://ecx.images-amazon.com/images/I/51xLKL7w92L._SL500_SS200_.jpg)
+
+####[リーダブルコード ―より良いコードを書くためのシンプルで実践的なテクニック](http://www.amazon.co.jp/dp/4873115655) ￥ 2,592
+
+![](http://ecx.images-amazon.com/images/I/51MgH8Jmr3L._SL500_SS200_.jpg)
+
+####[Code Reading ~オープンソースから学ぶソフトウェア開発技法~](http://www.amazon.co.jp/dp/B00IR1HYN0) ￥ 4,420
+
+![](http://ecx.images-amazon.com/images/I/51ge9hc8nrL._AA278_PIkin4,BottomRight,-31,22_SS200_SH20_OU09_.jpg)
+
+###Linux
+
+####[Linuxシステム実践入門](http://www.amazon.co.jp/dp/4774158135) ￥ 3,110
+
+![](http://ecx.images-amazon.com/images/I/51z3LtL65DL._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_SS200_SH20_OU09_.jpg)
+
+####[Linuxサーバーセキュリティ徹底入門 ープンソースによるサーバー防衛の基本](http://www.amazon.co.jp/dp/4798132381) ￥ 4,104
+
+![](http://ecx.images-amazon.com/images/I/510yx5GmUqL._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_SS200_SH20_OU09_.jpg)
+
+####[Linuxカーネル2.6解読室](http://www.amazon.co.jp/dp/4797338261) ￥ 5,832
+
+![](http://ecx.images-amazon.com/images/I/51KedJM81CL._SL500_SS200_.jpg)
+
+####[GitHub実践入門 ~Pull Requestによる開発の変革](http://www.amazon.co.jp/dp/477416366X) ￥ 2,786
+
+![](http://ecx.images-amazon.com/images/I/51PjpAUHZBL._SL500_SS200_.jpg)
+
+
+###Security
+
+####[リバースエンジニアリングバイブル ~コード再創造の美学~](http://www.amazon.co.jp/dp/4844334794) ￥ 4,320
+
+![](http://ecx.images-amazon.com/images/I/61pgvkPNzxL._SL500_SS200_.jpg)
+
+####[リバースエンジニアリング ―Pythonによるバイナリ解析技法 (Art Of Reversing)](http://www.amazon.co.jp/dp/4873114489) ￥ 3,456
+
+![](http://ecx.images-amazon.com/images/I/615%2BU0ePssL._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_SS200_SH20_OU09_.jpg)
+
+####[アナライジング・マルウェア ―フリーツールを使った感染事案対処 (Art Of Reversing)](http://www.amazon.co.jp/dp/4873114551/) ￥ 3,240
+
+![](http://ecx.images-amazon.com/images/I/61ljhdyTXXL._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_SS200_SH20_OU09_.jpg)
+
+####[Hacking: 美しき策謀 第2版 ―脆弱性攻撃の理論と実際](http://www.amazon.co.jp/dp/4873115140) ￥ 4,536
+
+![](http://ecx.images-amazon.com/images/I/51bC2aKyJWL._SL500_SS200_.jpg)
+
+
+####[実践 Metasploit ―ペネトレーションテストによる脆弱性評価](http://www.amazon.co.jp/dp/4873115388) ￥ 4,104
+
+![](http://ecx.images-amazon.com/images/I/51ApNgP272L._SL500_SS200_.jpg)
+
+####[実践ネットワークセキュリティ監査―リスク評価と危機管理](http://www.amazon.co.jp/dp/4873112044) ￥ 4,536
+
+![](http://ecx.images-amazon.com/images/I/51D7G5F31VL._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_SS200_SH20_OU09_.jpg)
+
+####[実践 パケット解析 第2版 ―Wiresharkを使ったトラブルシューティング](http://www.amazon.co.jp/dp/4873115698) ￥ 3,024
+
+![](http://ecx.images-amazon.com/images/I/51N4CCTgA9L._SL500_SS200_.jpg)
+
+####[Binary Hacks ―ハッカー秘伝のテクニック100選](http://www.amazon.co.jp/dp/4873112885) ￥ 3,456
+
+![](http://ecx.images-amazon.com/images/I/41TNSPT9VVL._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_SS200_SH20_OU09_.jpg)
+
+###Medicine
+
+####[医者に殺されない47の心得 医療と薬を遠ざけて、元気に、長生きする方法](http://www.amazon.co.jp/dp/4776207648) ￥ 1,188
+
+![](http://ecx.images-amazon.com/images/I/51bHYxcIkhL._SL500_SS200_.jpg)
+
+####[なにを食べたらいいの?](http://www.amazon.co.jp/dp/4103135719) ￥ 1,296
+
+![](http://ecx.images-amazon.com/images/I/416NMVUGkoL._SL500_SS200_.jpg)
+
+####[老化はなぜ進むのか―遺伝子レベルで解明された巧妙なメカニズム](http://www.amazon.co.jp/dp/4062576627) ￥ 886
+
+![](http://ecx.images-amazon.com/images/I/51ucjygq8YL._SL500_SS200_.jpg)
+
+###Law
+
+####[有斐閣判例六法 平成26年版](http://www.amazon.co.jp/dp/4641003343) ￥ 2,808
+
+![](http://ecx.images-amazon.com/images/I/41g3Ix8jYWL._SL500_SS200_.jpg)
+
+####[S式1問1答法律用語問題集](http://www.amazon.co.jp/dp/4426112206) ￥ 2,700
+
+![](http://ecx.images-amazon.com/images/I/51I7IwJWv3L._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_SS200_SH20_OU09_.jpg)
+
+####[S式1問1答重要論点問題集](http://www.amazon.co.jp/dp/4426106826) ￥ 2,484
+
+![](http://ecx.images-amazon.com/images/I/416C8khLK5L._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_SS200_SH20_OU09_.jpg)
+
+###Investment
+
+####[新版 魔術師たちの心理学―トレードで生計を立てる秘訣と心構え](http://www.amazon.co.jp/dp/477597100X) ￥ 3,024
+
+![](http://ecx.images-amazon.com/images/I/41K0aRhYldL._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_SS200_SH20_OU09_.jpg)
+
+####[マーケットの魔術師 - 米トップトレーダーが語る成功の秘訣](http://www.amazon.co.jp/dp/4939103404) ￥ 3,024
+
+![](http://ecx.images-amazon.com/images/I/5122PKVSWQL._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_SS200_SH20_OU09_.jpg)
+
+####[新マーケットの魔術師―米トップトレーダーたちが語る成功の秘密](http://www.amazon.co.jp/dp/493910334X) ￥ 3,024
+
+![](http://ecx.images-amazon.com/images/I/51MEJG5YDJL._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_SS200_SH20_OU09_.jpg) ￥ 3,024
+
+####[規律とトレーダー 相場心理分析入門](http://www.amazon.co.jp/dp/4775970801) ￥ 3,024
+
+![](http://ecx.images-amazon.com/images/I/51vFnsP2i6L._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_SS200_SH20_OU09_.jpg)
+
+####[利食いと損切りのテクニック](http://www.amazon.co.jp/dp/477597162X/) ￥ 4,104
+
+![](http://ecx.images-amazon.com/images/I/51GwZ6gF4uL._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_SS200_SH20_OU09_.jpg)
+
+###Development
+
+####[「思い」と「実現」の法則](http://www.amazon.co.jp/dp/4781671098) ￥ 700
+
+![](http://ecx.images-amazon.com/images/I/51hmiNyzeDL._SL500_SS200_.jpg)
+
+####[伝説のトレーダー集団 タートル流投資の魔術](http://www.amazon.co.jp/dp/4198624267) ￥ 1,836
+
+![](http://ecx.images-amazon.com/images/I/51gR09y58JL._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_SS200_SH20_OU09_.jpg)
+
+##Comment
+
+###Gadget
+
+方向性としては、タブレットやパソコン、他のガジェットのスペックについては、それほど重要視しません。
+
+なぜなら、道具というのは、使い手次第だからです。どれだけのスペックを持ちあわせても、それを使いこなせなければ、全く意味がありません。
+
+また、例え最新機種を持っていても、やっていることは、数年前とどれだけ変化しているのかをよく考えてみてください。
+
+あまり変わっていないのではないでしょうか。
+
+さらに、数年前のハッカーと比べて、今の自分は、一体どれだけのことができるでしょう。
+
+例え最新機種を持っていたとしても、自分ができることは、数年前のハッカーと比べて、その足元にも及ばない人が多いのではないでしょうか。
+
+このようなこともあり、私は、それほどスペックが重要なものとは思えません。
+
+もちろん、これは、個人環境や実現したいことによると思います。
+
+しかし、一般人が一般的なことをするのに必要なスペックというのは、それほど高くないんじゃないかなとは思います。
+
+###Book
+
+本については、どの本もそれほど本質的なものではありません。重要なのは、やる気だけです。
+
+今やインターネットから得られる情報のほうが本質的であり、深く学ぶには、自らこれらの情報を取捨選択し、何らかの形で実践し、自分なりのやり方を構築していくしかありません。
+
+よって、本は、主に興味を得るためのきっかけや、網羅的なキーワードを得るために使われます。
+
+しかし、本来の順序としては、興味、実践、本という順序が一番良いのではないかと私は考えています。
+
+例えば、プログラミングについても、ドキュメントは、インターネット上に網羅されている事が多く、プログラムの作成は、実践から入った人のほうが伸びる印象があります。
+
+ただし、専門的な本は、繰り返し読むことで、一定のレベルを確立できることも事実です。
+
+また、分野によっては、英語しかなく本(和訳など)に頼らざるをえない場合もあります。
+
+そんな時は、迷わず本に頼りましょう。
+
+しかし、高度なレベルを求める場合は、やはり、自らの補完や実践が必要になってきます。
+
+例えば、投資関連の場合、本を読むよりも、個人が行うバックテストのほうが重要になるのではないかということです。
+
+医学というか健康関連の本については、一般人が当たり前のように考えている安全という先入観を打ち破る内容になっています。
+
+これは、非常に重要な事だと私は思います。
+
+まず、病院は、慈善団体ではなく、お金儲けのための機関です。つまり、病人の健康よりも、お金儲けのほうが優先されやすいということです。
+
+また、食品についても同じことが言えます。更に、大ヒット食品が、なぜ大ヒットしたのか、考えた方はいるでしょうか。
+
+では、食品を売ろうとした場合、どうすれば売れると考えるのが一般でしょうか。
+
+これは、食べたらまた食べたくなるように依存させることが、最も売れる食品だと考えるのが一般的でしょう。
+
+したがって、大ヒット食品のほとんどが激しく依存症を引き起こす材料で作られているようです。そして、これは、体によくありません。
+
+また、最近では、ゼロカロリーのヨーグルトなども登場して、人気を博しています。
+
+しかし、ヨーグルトのような乳製品で脂質ゼロをどのように実現しているのでしょうか。
+
+ここで、考えられるのが、脂質ゼロを達成するために、あらゆる薬品の組み合わせで、なんとかヨーグルトの味を実現しているようにも考えられます。
+
+つまり、0カロリー、健康食品というものについても、基本懐疑的でなければ、本当のことは見えてこないと私は思っています。
+
+

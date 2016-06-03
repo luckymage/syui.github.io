@@ -1,0 +1,158 @@
+---
+layout: post
+title: "WeeChat"
+date: 2014-06-06
+comments: true
+categories: [terminal, programming]
+tags: [chat, cli, python, mac, tor, ssh]
+---
+
+
+<img src="{{ root_url }}/images/more.png" alt="phoenix-power" align="left" width="100" height="100">weechatを使ったIRCチャット。<!--more--><br clear="all">
+
+
+##weechat
+
+###weechatの初期設定
+
+####install
+
+{% codeblock lang:bash %}
+$ brew install weechat --with-ruby --with-python --with-perl
+{% endcodeblock %}
+
+####plugin
+
+まずは、プラグイン管理します。
+
+{% codeblock lang:bash %}
+$ curl -o ~/.weechat/python/autoload/weeget.py http://www.weechat.org/files/scripts/weeget.py
+{% endcodeblock %}
+
+次に、各種プラグインを以下の`weechat`コマンドを使ってインストールします。
+
+{% codeblock lang:bash %}
+/weeget install grep.py buffers.pl colorize_nicks.py colorize_lines.pl go.py growl.py
+{% endcodeblock %}
+
+あとは、`growl.py`に必要なツールをインストールします。
+
+{% codeblock lang:bash %}
+$ sudo pip install gntp
+{% endcodeblock %}
+
+####setting
+
+{% codeblock lang:bash %}
+$ weechat-curses
+
+/help irc.server.freenode.autoconnect
+
+/weeget install iset.pl
+
+/iset
+{% endcodeblock %}
+
+通常は、以下のように設定します。
+
+{% codeblock lang:bash %}
+## サーバー接続
+/connect chat.freenode.net
+
+/connect freenode
+
+## サーバー切断
+/disconnect freenode
+
+## チャンネル接続
+/join #ubuntu
+
+## チャンネル切断
+/part
+/close
+
+## 終了
+/exit
+/quit
+{% endcodeblock %}
+
+上記は、`freenode`サーバーに接続した後、`archlinux`チャンネルを選択しています。
+
+{% codeblock lang:bash %}
+## サーバーの立ち上げ
+/server add example irc.example.com/6667 -ssl -autoconnect
+
+## 設定の保存
+/save
+{% endcodeblock %}
+
+
+[WeeChat クイックスタートガイド](http://www.weechat.org/files/doc/devel/weechat_quickstart.ja.html)
+
+[WeeChat - ArchWiki](https://wiki.archlinux.org/index.php/WeeChat)
+
+[IRC - weechat のススメ（導入〜設定） - Qiita](http://qiita.com/taketin@github/items/dd91ba59dceda96c94aa)
+
+###weechatの使い方
+
+####keybind
+
+|キー|内容|
+|--|--|
+|Alt+↔|前後のバッファに切り替える
+|F5/F6|前後のバッファに切り替える
+|F7/F8|前後のウィンドウに切り替える
+|F9/F10|タイトルバーをスクロール表示
+|F11/F12|ニックネーム一覧をスクロール表示
+|Tab|入力バーでシェルと同様のテキスト補完を行う
+|PgUp/PgDn|現在のバッファのテキストをスクロール表示
+|Alt+a|アクティブなバッファに移動する
+
+キーの割当は、以下のように設定できます。
+
+{% codeblock lang:bash %}
+/key bind (alt-kを押下) (alt-yを押下) /buffer close
+{% endcodeblock %}
+
+####plugin
+
+登録されてないプラグインを使う方法です。
+
+例えば、URLを開くプラグインを導入してみましょう。
+
+``` bash weechat-url-hinter.rb
+$ curl -o ~/.weechat/ruby/autoload/url_hinter.rb https://raw.githubusercontent.com/tkengo/weechat-url-hinter/master/weechat-url-hinter.rb
+```
+
+https://github.com/tkengo/weechat-url-hinter
+
+
+####tor
+
+{% codeblock lang:bash weechat/tor http://www.weechat.org/files/doc/stable/weechat_user.ja.html#irc_tor_freenode LINK %}
+$ brew install tor
+
+/proxy add tor socks5 127.0.0.1 9050
+
+/server add freenode-tor p4fsi4ockecnea7l.onion
+
+/set irc.server.freenode-tor.proxy "tor"
+
+/set irc.server.freenode-tor.sasl_mechanism dh-blowfish
+
+/set irc.server.freenode-tor.sasl_username "your_nickname"
+
+/set irc.server.freenode-tor.sasl_password "your_password"
+
+/connect freenode-tor
+{% endcodeblock %}
+
+https://wiki.archlinux.org/index.php/tor
+
+https://we.riseup.net/archlinux/weechat
+
+###コメント
+
+英語の勉強を続けるには、やっぱり英語圏の人と友だちになって会話をすることが、一番効果的だと思うので、`IRC`で話しかけてみようかな...。
+
+

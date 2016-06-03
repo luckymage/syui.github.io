@@ -1,0 +1,143 @@
+---
+layout: post
+title: "Web Fontについて考える"
+date: 2014-06-17
+comments: true
+categories: [blog]
+tags: [octopress, github, html, css]
+---
+
+<img src="{{ root_url }}/images/more.png" alt="phoenix-power" align="left" width="100" height="100">Web Fontの作成や使用など<!--more--><br clear="all">
+
+##Font Awesome Icon
+
+[Font Awesome](http://fortawesome.github.io/Font-Awesome/)が便利です。
+
+{% githubrepo FortAwesome/Font-Awesome %}
+
+{% codeblock lang:bash %}
+$ echo "gem 'font-awesome-less'" >> Gemfile
+
+$ bundle
+
+$ gem install font-awesome-less
+{% endcodeblock %}
+
+便利ですし、種類が豊富です。
+
+
+##SVGからPNGに変換する
+
+Font Awesomeのアイコンを`.png`で生成するなら、`font-awesome-to-png`が便利です。カラーなども指定できます。
+
+{% githubrepo odyniec/font-awesome-to-png %}
+
+{% codeblock lang:bash %}
+$ pip install pillow
+
+$ git clone https://github.com/odyniec/font-awesome-to-png
+
+$ cd !$:t
+
+$ font-awesome-to-png.py --size 32 --color blue asterisk
+
+# font-awesome-svg-png
+$ npm install -g font-awesome-svg-png
+{% endcodeblock %}
+
+`ImageMagick`を使うなら、以下のとおりです。
+
+{% codeblock lang:bash %}
+$ convert test.svg test.png
+{% endcodeblock %}
+
+Macでは、`qlamanager`が使えます。
+
+{% codeblock lang:bash %}
+$ qlmanage -t -s 800 -o . test.svg
+{% endcodeblock %}
+
+##SVGファイルの作成
+
+<a href="http://tink.elliptium.net/2014/02/09/python_libraries_to_create_a_svg_file.html" target="_blank">SVG ファイルを作成する Python ライブラリ — Elliptium</a>
+
+[inkscape](http://www.inkscape.org/ja/download)が使えます。
+
+
+> - パス -> ビットマップをトレース
+>
+> - ファイル -> ドキュメント設定 -> ページサイズを描画全体または選択...
+
+
+##Web Fontの作成
+
+<a href="http://zxcvbnmnbvcxz.com/convert-to-webfont/" target="_blank">手持ちのフォントをWEBフォント用に一括変換してくれるサービス【@FONT-FACE GENERATOR】 – Online Convert to WEBFONT | Stronghold</a>
+
+[Iconvault](http://iconvau.lt/)などのサイトジェネレーターを使用し、作成するみたいです。
+
+私は、[icomoon](http://icomoon.io/app/)を使いました。
+
+CSSの書式は、以下の様な感じになるらしいです。
+
+{% codeblock lang:css %}
+@font-face {
+    font-family: 'fontset';
+    src: url('fontname.eot');
+    src: url('fontname.eot?#iefix') format('embedded-opentype'),
+         url('fontname.woff') format('woff'),
+         url('fontname.ttf') format('truetype'),
+         url('fontname.svg#fontset') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+body{font-family:'fontset';}
+{% endcodeblock %}
+
+##Web Fontの使用
+
+{% codeblock lang:bash %}
+$ cd ~/Downloads/icomoon
+
+$ mv style.css ~/fonts/icomoon.css
+
+$ cd ~/octopress/source/
+
+$ cp -r ~/Downloads/icomoon/fonts .
+
+$ vim _includes/head.html
+{% endcodeblock %}
+
+あとは、`head`内に以下のタグを挿入します。
+
+{% codeblock lang:bash %}
+{% raw %}
+<link rel="stylesheet" href="/fonts/icomoon.css">
+{% endraw %}
+{% endcodeblock %}
+
+直前に導入した`octicons`がリンクを貼るやり方でしたので、それに倣いました。
+
+この場合は、パスを書き換えてください。
+
+{% codeblock lang:css source/icomoon/icomoon.css %}
+@font-face {
+  font-family: 'icomoon';
+  src:url('icomoon.eot?-cyd9l8');
+  src:url('icomoon.eot?#iefix-cyd9l8') format('embedded-opentype'),
+    url('icomoon.woff?-cyd9l8') format('woff'),
+    url('icomoon.ttf?-cyd9l8') format('truetype'),
+    url('icomoon.svg?-cyd9l8#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+{% endcodeblock %}
+
+もちろん、CSSは、`octopress/scss`以下のフォルダにて記述してもOKです。
+
+####<span class="icon-phoenix" style="font-size:30px;"></span>
+
+{% codeblock lang:html SAMPLE http://icomoon.io/app/ LINK %}
+<span class="icon-phoenix" style="font-size:30px;"></span>
+{% endcodeblock %}
+
+
