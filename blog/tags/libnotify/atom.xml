@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: libnotify | MBA-HACK2]]></title>
+  <link href="https://syui.github.io/blog/tags/libnotify/atom.xml" rel="self"/>
+  <link href="https://syui.github.io/"/>
+  <updated>2016-07-07T08:16:53+00:00</updated>
+  <id>https://syui.github.io/</id>
+  <author>
+    <name><![CDATA[syui]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
